@@ -48,7 +48,7 @@ export default function ProductDetailPage() {
               key={product.id}
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full aspect-[4/3] object-cover rounded-xl shadow-sm animate-scale-in"
               style={{
                 viewTransitionName: `product-image-${product.id}`,
               }}
@@ -113,32 +113,32 @@ export default function ProductDetailPage() {
         )}
         <div className="bg-section h-2 w-full"></div>
         <div className="font-medium py-2 px-4">
-          <div className="pt-2 pb-2.5">Sản phẩm khác</div>
+          <div className="pt-2 pb-2.5">Dự án khác</div>
           <HorizontalDivider />
         </div>
         <RelatedProducts currentProductId={product.id} />
       </div>
 
       <HorizontalDivider />
-      <div className="flex-none grid grid-cols-2 gap-2 py-3 px-4">
+      <div className="flex-none grid grid-cols-2 gap-3 py-3 px-4 glassmorphism sticky bottom-0 z-10 border-t border-gray-100">
         <Button
           large
           onClick={() => {
             addToCart(1);
-            toast.success("Đã thêm vào giỏ hàng");
+            toast.success("Đã gửi yêu cầu tư vấn");
           }}
         >
-          Thêm vào giỏ
+          Yêu cầu tư vấn
         </Button>
         <Button
           large
           primary
           onClick={() => {
             addToCart(1);
-            navigate("/cart");
+            navigate("/contact");
           }}
         >
-          Mua ngay
+          Xem sa bàn ảo
         </Button>
       </div>
     </div>

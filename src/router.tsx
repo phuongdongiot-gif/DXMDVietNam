@@ -1,11 +1,14 @@
 import Layout from "@/components/layout";
-import CartPage from "@/pages/cart";
+import ContactPage from "@/pages/contact";
 import ProductListPage from "@/pages/catalog/product-list";
 import CategoryListPage from "@/pages/catalog/category-list";
 import ProductDetailPage from "@/pages/catalog/product-detail";
 import HomePage from "@/pages/home";
 import ProfilePage from "@/pages/profile";
 import SearchPage from "@/pages/search";
+import MapPage from "@/pages/map";
+import NewsPage from "@/pages/news";
+import NewsDetailPage from "@/pages/news/detail";
 import { createBrowserRouter } from "react-router-dom";
 import { getBasePath } from "@/utils/zma";
 
@@ -26,15 +29,15 @@ const router = createBrowserRouter(
           path: "/categories",
           element: <CategoryListPage />,
           handle: {
-            title: "Danh mục sản phẩm",
+            title: "Danh mục dự án",
             back: false,
           },
         },
         {
-          path: "/cart",
-          element: <CartPage />,
+          path: "/contact",
+          element: <ContactPage />,
           handle: {
-            title: "Giỏ hàng",
+            title: "Nhận tư vấn",
           },
         },
         {
@@ -71,6 +74,27 @@ const router = createBrowserRouter(
           element: <SearchPage />,
           handle: {
             title: "Tìm kiếm",
+          },
+        },
+        {
+          path: "/map",
+          element: <MapPage />,
+          handle: {
+            title: "Bản đồ",
+          },
+        },
+        {
+          path: "/news",
+          element: <NewsPage />,
+          handle: {
+            title: "Tin tức",
+          },
+        },
+        {
+          path: "/news/:id",
+          element: <NewsDetailPage />,
+          handle: {
+            title: "Chi tiết bài viết",
           },
         },
       ],

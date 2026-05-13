@@ -1,13 +1,12 @@
 import ProductGrid from "@/components/product-grid";
 import Section from "@/components/section";
-import { useAtomValue } from "jotai";
-import { flashSaleProductsState } from "@/state";
+import { useProjectStore } from "@/stores/useProjectStore";
 
 export default function FlashSales() {
-  const products = useAtomValue(flashSaleProductsState);
+  const products = useProjectStore(s => s.projects);
 
   return (
-    <Section title="Flash Sales" viewMoreTo="/flash-sales">
+    <Section title="Dự án nổi bật" viewMoreTo="/flash-sales">
       <ProductGrid products={products} />
     </Section>
   );

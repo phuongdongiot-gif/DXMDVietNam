@@ -2,10 +2,10 @@ import { atom } from "jotai";
 import { atomFamily, unwrap } from "jotai/utils";
 import { Cart, Category, Color, Product } from "types";
 import { requestWithFallback } from "@/utils/request";
-import { getUserInfo } from "zmp-sdk";
+import api from "zmp-sdk";
 
 export const userState = atom(() =>
-  getUserInfo({
+  api.getUserInfo({
     avatarType: "normal",
   })
 );
@@ -34,7 +34,7 @@ export const productsState = atom(async (get) => {
   >("/products", []);
   return products.map((product) => ({
     ...product,
-    category: categories.find(
+    category: product.category || categories.find(
       (category) => category.id === product.categoryId
     )!,
   }));

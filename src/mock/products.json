@@ -1,310 +1,482 @@
 [
   {
-    "id": 1,
-    "categoryId": 1,
-    "name": "Light brown knit sweater",
-    "price": 189000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-1.webp",
+    "id": 5688,
+    "name": "Fenica",
+    "price": 35000000,
+    "originalPrice": 40000000,
+    "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/fenica/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
-      },
-      {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
-      }
-    ]
+    "sizes": [],
+    "colors": []
   },
   {
-    "id": 2,
-    "categoryId": 1,
-    "name": "Beige oversized sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-2.webp",
+    "id": 5631,
+    "name": "Diamond Boulevard",
+    "price": 36000000,
+    "originalPrice": 41000000,
+    "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "categoryId": 1,
-    "name": "Brown casual sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-3.webp",
-    "details": [
-      {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/diamond-boulevard/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
-      },
-      {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
-      }
-    ]
+    "sizes": [],
+    "colors": []
   },
   {
-    "id": 4,
-    "categoryId": 1,
-    "name": "Dark brown crew neck sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-4.webp",
+    "id": 5485,
+    "name": "A&T Saigon Riverside",
+    "price": 37000000,
+    "originalPrice": 42000000,
+    "image": "https://dxmdvietnam.vn/files/2026/04/atsaigonriverside-afternoon.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/at-saigon-riverside/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
-      },
-      {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
-      }
-    ]
+    "sizes": [],
+    "colors": []
   },
   {
-    "id": 5,
-    "categoryId": 1,
-    "name": "Brown ribbed sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-5.webp",
+    "id": 5590,
+    "name": "Symlife",
+    "price": 38000000,
+    "originalPrice": 43000000,
+    "image": "https://dxmdvietnam.vn/files/2026/04/du-an-can-ho-symlife.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/symlife/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
-      },
-      {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
-      }
-    ]
+    "sizes": [],
+    "colors": []
   },
   {
-    "id": 6,
-    "categoryId": 1,
-    "name": "Chunky brown sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-6.webp",
+    "id": 5364,
+    "name": "The Privé",
+    "price": 39000000,
+    "originalPrice": 44000000,
+    "image": "https://dxmdvietnam.vn/files/2025/04/can-ho-the-prive.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/the-prive/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
-      },
-      {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
-      }
-    ]
+    "sizes": [],
+    "colors": []
   },
   {
-    "id": 7,
-    "categoryId": 1,
-    "name": "Classic brown wool sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-7.webp",
+    "id": 5308,
+    "name": "Fresia Riverside",
+    "price": 40000000,
+    "originalPrice": 45000000,
+    "image": "https://dxmdvietnam.vn/files/2025/04/fresia-riverside.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/fresia-riverside/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
-      },
-      {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
-      }
-    ]
+    "sizes": [],
+    "colors": []
   },
   {
-    "id": 8,
-    "categoryId": 1,
-    "name": "Long brown sweater brown sweater",
-    "price": 189000,
-    "originalPrice": 300000,
-    "image": "https://stc-zmp.zadn.vn/zaui-fashion/home/product-8.webp",
+    "id": 5239,
+    "name": "Stown Gateway",
+    "price": 41000000,
+    "originalPrice": 46000000,
+    "image": "https://dxmdvietnam.vn/files/2024/12/du-an-stown-gateway.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
     "details": [
       {
-        "title": "Mô tả sản phẩm",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "title": "Chất liệu / Cách bảo quản",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
-      },
-      {
-        "title": "Hướng dẫn sử dụng",
-        "content": "Với công nghệ DRY, Cool Touch, tính năng hút ẩm và khử mùi tiện nghi.\n- Chất thun co giãn mịn.\n- Viền sau mềm mại và mịn màng.\n- Vừa vặn thoải mái.\n- Được thiết kế không có dải lót ở phía sau để mang lại vẻ ngoài bóng bẩy.\n- Hỗ trợ toàn diện đảm bảo cúp luôn ở đúng vị trí.\n\n**Chiều rộng dây đeo vai khác nhau tùy theo kích cỡ."
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/stown-gateway/"
       }
     ],
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 5174,
+    "name": "Izumi City",
+    "price": 42000000,
+    "originalPrice": 47000000,
+    "image": "https://dxmdvietnam.vn/files/2024/11/izumi-city.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
       {
-        "name": "Đỏ",
-        "hex": "#FFC7C7"
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
       },
       {
-        "name": "Xanh dương",
-        "hex": "#DBEBFF"
-      },
-      {
-        "name": "Xanh lá",
-        "hex": "#D1F0DB"
-      },
-      {
-        "name": "Xám",
-        "hex": "#D9E2ED"
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/izumi-city/"
       }
-    ]
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 5127,
+    "name": "Caraworld Cam Ranh",
+    "price": 43000000,
+    "originalPrice": 48000000,
+    "image": "https://dxmdvietnam.vn/files/2024/11/caraworld-cam-ranh.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/caraworld-cam-ranh/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 5023,
+    "name": "King Crown Infinity",
+    "price": 44000000,
+    "originalPrice": 49000000,
+    "image": "https://dxmdvietnam.vn/files/2024/10/phoi-canh-du-an-king-crown-infinity-3.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/king-crown-infinity/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4852,
+    "name": "TT Avio",
+    "price": 45000000,
+    "originalPrice": 50000000,
+    "image": "https://dxmdvietnam.vn/files/2024/09/tt-avio.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/tt-avio/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4330,
+    "name": "A&T Sky Garden",
+    "price": 46000000,
+    "originalPrice": 51000000,
+    "image": "https://dxmdvietnam.vn/files/2024/07/PC22_Cam-nhin-tu-song.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/at-sky-garden/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4592,
+    "name": "Libera Nha Trang",
+    "price": 47000000,
+    "originalPrice": 52000000,
+    "image": "https://dxmdvietnam.vn/files/2024/08/libera-nha-trang.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/libera-nha-trang/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4527,
+    "name": "Ben Hill",
+    "price": 48000000,
+    "originalPrice": 53000000,
+    "image": "https://dxmdvietnam.vn/files/2024/08/1.1-scaled.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/ben-hill/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4264,
+    "name": "The Emerald 68",
+    "price": 49000000,
+    "originalPrice": 54000000,
+    "image": "https://dxmdvietnam.vn/files/2023/09/tqaig-The-Emerald-68.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/the-emerald-68/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4167,
+    "name": "Picity Sky Park",
+    "price": 50000000,
+    "originalPrice": 55000000,
+    "image": "https://dxmdvietnam.vn/files/2023/08/banner-PicitySkyPark-DXMD-Vietnam-night-.png",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/picity-sky-park/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 4027,
+    "name": "Honas Residence",
+    "price": 51000000,
+    "originalPrice": 56000000,
+    "image": "https://dxmdvietnam.vn/files/2023/06/honas-slide2.jpg",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/honas-residence/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 3281,
+    "name": "The Grand Sentosa",
+    "price": 52000000,
+    "originalPrice": 57000000,
+    "image": "https://dxmdvietnam.vn/files/2022/08/the-grand-sentosa-phoi-canh.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/the-grand-sentosa/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 3564,
+    "name": "HT Pearl",
+    "price": 53000000,
+    "originalPrice": 58000000,
+    "image": "https://dxmdvietnam.vn/files/2022/10/htpearl-BANNER.png",
+    "category": {
+      "id": 1,
+      "name": "Căn hộ Cao cấp",
+      "image": "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/ht-pearl/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
+  },
+  {
+    "id": 3342,
+    "name": "The Grand Manhattan",
+    "price": 54000000,
+    "originalPrice": 59000000,
+    "image": "https://dxmdvietnam.vn/files/2022/08/Phoi-canh-The-Grand-Manhattan.jpg",
+    "category": {
+      "id": 2,
+      "name": "Đất nền",
+      "image": "https://dxmdvietnam.vn/files/2026/04/can-ho-diamond-boulevard.jpg"
+    },
+    "details": [
+      {
+        "title": "Tổng quan",
+        "content": "\n\n\n            \n\n    \n\n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n        \n            \n            \n\n\n ..."
+      },
+      {
+        "title": "Website",
+        "content": "https://dxmdvietnam.vn/du-an/the-grand-manhattan/"
+      }
+    ],
+    "sizes": [],
+    "colors": []
   }
 ]

@@ -1,9 +1,8 @@
 import Carousel from "@/components/carousel";
-import { useAtomValue } from "jotai";
-import { bannersState } from "@/state";
+import { useProjectStore } from "@/stores/useProjectStore";
 
 export default function Banners() {
-  const banners = useAtomValue(bannersState);
+  const banners = useProjectStore(s => s.banners);
 
   return (
     <Carousel

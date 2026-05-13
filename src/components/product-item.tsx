@@ -17,16 +17,17 @@ export default function ProductItem(props: ProductItemProps) {
 
   return (
     <TransitionLink
-      className="flex flex-col cursor-pointer group"
+      className="flex flex-col cursor-pointer group active:scale-[0.98] transition-transform duration-300 ease-out shadow-sm rounded-lg overflow-hidden bg-white animate-fade-in-up"
       to={`/product/${props.product.id}`}
       replace={props.replace}
       onClick={() => setSelected(true)}
     >
       {({ isTransitioning }) => (
         <>
-          <img
-            src={props.product.image}
-            className="w-full aspect-square object-cover rounded-t-lg"
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <img
+              src={props.product.image}
+              className="w-full h-full object-cover rounded-t-lg transition-transform duration-500 group-hover:scale-105"
             style={{
               viewTransitionName:
                 isTransitioning && selected // only animate the "clicked" product item in related products list
@@ -34,8 +35,9 @@ export default function ProductItem(props: ProductItemProps) {
                   : undefined,
             }}
             alt={props.product.name}
-          />
-          <div className="py-2">
+            />
+          </div>
+          <div className="p-3">
             <div className="text-3xs text-subtitle truncate">
               {props.product.category.name}
             </div>

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { showOAWidget } from "zmp-sdk";
+import api from "zmp-sdk";
 
 export default function FollowOAWidget() {
   useEffect(() => {
-    showOAWidget({
+    api.showOAWidget({
       id: "oaWidget",
       guidingText: "Quan tâm OA để nhận các đặc quyền ưu đãi",
       color: "#F7F7F8",

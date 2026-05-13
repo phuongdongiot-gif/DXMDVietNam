@@ -6,7 +6,7 @@ import { cartState, cartTotalState } from "@/state";
 import { Cart, CartItem, Product, SelectedOptions } from "types";
 import { getDefaultOptions, isIdentical } from "@/utils/cart";
 import { getConfig } from "@/utils/template";
-import { openChat, purchase } from "zmp-sdk";
+import api from "zmp-sdk";
 
 export function useRealHeight(
   element: MutableRefObject<HTMLDivElement | null>,
@@ -106,7 +106,7 @@ export function useAddToCart(product: Product, editingCartItemId?: number) {
 
 export function useCustomerSupport() {
   return () =>
-    openChat({
+    api.openChat({
       type: "oa",
       id: getConfig((config) => config.template.oaIDtoOpenChat),
     });
@@ -124,7 +124,7 @@ export function useCheckout() {
   const setCart = useSetAtom(cartState);
   return async () => {
     try {
-      await purchase({
+      await api.purchase({
         amount: totalAmount,
         desc: "Thanh toán đơn hàng",
         method: "",

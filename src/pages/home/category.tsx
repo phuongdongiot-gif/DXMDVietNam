@@ -1,19 +1,18 @@
 import Section from "@/components/section";
 import TransitionLink from "@/components/transition-link";
-import { useAtomValue } from "jotai";
+import { useProjectStore } from "@/stores/useProjectStore";
 import { Link, useNavigate } from "react-router-dom";
-import { categoriesState } from "@/state";
 
 export default function Category() {
-  const categories = useAtomValue(categoriesState);
+  const categories = useProjectStore(s => s.categories);
 
   return (
-    <Section title="Danh mục sản phẩm" viewMoreTo="/categories">
+    <Section title="Danh mục dự án" viewMoreTo="/categories">
       <div className="pt-2.5 pb-4 flex space-x-6 overflow-x-auto px-4">
         {categories.map((category) => (
           <TransitionLink
             key={category.id}
-            className="flex flex-col items-center space-y-2 flex-none basis-[70px] overflow-hidden cursor-pointer"
+            className="flex flex-col items-center space-y-2 flex-none basis-[70px] overflow-hidden cursor-pointer group active:scale-95 transition-transform duration-200"
             to={`/category/${category.id}`}
           >
             <img
