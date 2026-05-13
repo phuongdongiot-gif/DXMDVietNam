@@ -10,9 +10,23 @@ export const userState = atom(() =>
   })
 );
 
-export const bannersState = atom(() =>
-  requestWithFallback<string[]>("/banners", [])
-);
+export const bannersState = atom(async () => {
+  try {
+    const res = await fetch("https://dxmdvietnam.vn/wp-json/wp/v2/pages?slug=trang-chu");
+    const data = await res.json();
+    if (data && data.length > 0 && data[0].acf && data[0].acf.du_an_nb) {
+      return data[0].acf.du_an_nb.map((item: any) => item.img).filter(Boolean);
+    }
+  } catch (error) {
+    console.error("Error fetching banners", error);
+  }
+  
+  // Fallback
+  return [
+    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+  ];
+});
 
 export const tabsState = atom(["Tất cả", "Nam", "Nữ", "Trẻ em"]);
 
@@ -40,19 +54,19 @@ export const categoriesState = atom(async (get) => {
   // Try to find a real image from the fetched projects for each category
   if (Array.isArray(rawProducts)) {
     for (const p of rawProducts) {
-      if (p._embedded && p._embedded['wp:term']) {
-        const terms = p._embedded['wp:term'].flat();
-        const hasTag5 = terms.some((t: any) => t.id === 5);
-        const hasTag6 = terms.some((t: any) => t.id === 6);
-        
-        const imageUrl = p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : null;
-        
-        if (hasTag5 && imageUrl && canHoImage.includes('unsplash')) {
-          canHoImage = imageUrl;
-        }
-        if (hasTag6 && imageUrl && khuDoThiImage.includes('unsplash')) {
-          khuDoThiImage = imageUrl;
-        }
+      const classList = p.class_list || [];
+      const hasTag5 = classList.includes('danh-muc-du-an-can-ho');
+      const hasTag6 = classList.includes('danh-muc-du-an-khu-do-thi');
+      
+      const imageUrl = p._embedded && p._embedded['wp:featuredmedia'] 
+        ? p._embedded['wp:featuredmedia'][0].source_url 
+        : null;
+      
+      if (hasTag5 && imageUrl && canHoImage.includes('unsplash')) {
+        canHoImage = imageUrl;
+      }
+      if (hasTag6 && imageUrl && khuDoThiImage.includes('unsplash')) {
+        khuDoThiImage = imageUrl;
       }
     }
   }
@@ -114,13 +128,11 @@ export const productsState = atom(async (get) => {
 
     // Default to 5 (Căn hộ)
     let categoryId = "5";
-    if (p._embedded && p._embedded['wp:term']) {
-       const terms = p._embedded['wp:term'].flat();
-       // Look for the specific term IDs requested by user
-       const catTerm = terms.find((t: any) => t.id === 5 || t.id === 6);
-       if (catTerm) {
-         categoryId = String(catTerm.id);
-       }
+    const classList = p.class_list || [];
+    if (classList.includes('danh-muc-du-an-khu-do-thi')) {
+      categoryId = "6";
+    } else if (classList.includes('danh-muc-du-an-can-ho')) {
+      categoryId = "5";
     }
     
     const category = categories.find((c: any) => c.id === categoryId) || categories[0];

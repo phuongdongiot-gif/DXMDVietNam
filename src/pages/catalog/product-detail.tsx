@@ -15,9 +15,9 @@ import { useState, useEffect } from "react";
 export default function ProductDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = useAtomValue(productState(Number(id)))!;
+  const product = useAtomValue(productState(String(id)));
   
-  const details = product.details || [];
+  const details = product?.details || [];
   const tabs = details.map((d: any) => d.title);
   
   const [activeTab, setActiveTab] = useState(tabs[0] || "");
@@ -26,7 +26,7 @@ export default function ProductDetailPage() {
     if (tabs.length > 0 && !tabs.includes(activeTab)) {
       setActiveTab(tabs[0]);
     }
-  }, [product.id, tabs, activeTab]);
+  }, [product?.id, tabs, activeTab]);
 
   useEffect(() => {
     if (product) {
@@ -50,8 +50,8 @@ export default function ProductDetailPage() {
     try {
       api.openChat({
         type: "oa",
-        id: "123456789", // Replace with real OA ID
-        message: `Tôi muốn tư vấn về dự án ${product.name}`,
+        id: import.meta.env.VITE_ZALO_OA_ID || "0",
+        message: `Tôi muốn tư vấn về dự án ${product?.name || ""}`,
       });
     } catch (error) {
       navigate("/contact");
@@ -60,6 +60,15 @@ export default function ProductDetailPage() {
 
   // Get active content
   const activeContent = details.find((d: any) => d.title === activeTab)?.content || "";
+
+  if (!product) {
+    return (
+      <div className="flex items-center justify-center w-full h-full bg-background text-gray-500 flex-col">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p>Đang tải thông tin dự án...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full flex flex-col bg-background relative">
