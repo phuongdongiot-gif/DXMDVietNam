@@ -21,7 +21,8 @@ export const selectedTabIndexState = atom(0);
 // Fetch raw products from WP
 export const rawProductsState = atom(async () => {
   try {
-    const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/du-an?_embed&per_page=100');
+    // Filter by taxonomy tags 5 and 6
+    const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/du-an?danh-muc-du-an=5,6&_embed&per_page=100');
     return await res.json();
   } catch (error) {
     console.error("Error fetching projects from WP API", error);
@@ -29,46 +30,37 @@ export const rawProductsState = atom(async () => {
   }
 });
 
-// Extract unique categories from raw products
+// Categories are now strictly defined as tag 5 and 6
 export const categoriesState = atom(async (get) => {
   const rawProducts = await get(rawProductsState);
-  const categoriesMap = new Map<string, Category>();
   
-  rawProducts.forEach((p: any) => {
-    if (p._embedded && p._embedded['wp:term']) {
-      const terms = p._embedded['wp:term'].flat();
-      terms.forEach((term: any) => {
-        // taxonomy is 'danh-muc-du-an'
-        if (term.taxonomy === 'danh-muc-du-an') {
-          if (!categoriesMap.has(term.slug)) {
-            // Find an image from the project to represent the category
-            const imageUrl = p._embedded && p._embedded['wp:featuredmedia'] 
-              ? p._embedded['wp:featuredmedia'][0].source_url 
-              : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-              
-            categoriesMap.set(term.slug, {
-              id: term.slug,
-              name: term.name,
-              icon: "zi-box",
-              image: imageUrl
-            } as unknown as Category);
-          }
+  let canHoImage = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  let khuDoThiImage = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  
+  // Try to find a real image from the fetched projects for each category
+  if (Array.isArray(rawProducts)) {
+    for (const p of rawProducts) {
+      if (p._embedded && p._embedded['wp:term']) {
+        const terms = p._embedded['wp:term'].flat();
+        const hasTag5 = terms.some((t: any) => t.id === 5);
+        const hasTag6 = terms.some((t: any) => t.id === 6);
+        
+        const imageUrl = p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : null;
+        
+        if (hasTag5 && imageUrl && canHoImage.includes('unsplash')) {
+          canHoImage = imageUrl;
         }
-      });
+        if (hasTag6 && imageUrl && khuDoThiImage.includes('unsplash')) {
+          khuDoThiImage = imageUrl;
+        }
+      }
     }
-  });
-
-  // Fallback if no categories found
-  if (categoriesMap.size === 0) {
-    return [{ 
-      id: "can-ho-cao-cap", 
-      name: "Căn hộ Cao cấp", 
-      icon: "zi-box",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }] as unknown as Category[];
   }
 
-  return Array.from(categoriesMap.values());
+  return [
+    { id: "5", name: "Căn hộ", icon: "zi-box", image: canHoImage },
+    { id: "6", name: "Khu đô thị", icon: "zi-box", image: khuDoThiImage }
+  ] as unknown as Category[];
 });
 
 export const categoriesStateUpwrapped = unwrap(
@@ -80,6 +72,8 @@ export const productsState = atom(async (get) => {
   const rawProducts = await get(rawProductsState);
   const categories = await get(categoriesState);
   
+  if (!Array.isArray(rawProducts)) return [];
+
   return rawProducts.map((p: any) => {
     const acf = p.acf || {};
     const details = [];
@@ -118,12 +112,14 @@ export const productsState = atom(async (get) => {
       }
     }
 
-    let categoryId = "can-ho-cao-cap";
+    // Default to 5 (Căn hộ)
+    let categoryId = "5";
     if (p._embedded && p._embedded['wp:term']) {
        const terms = p._embedded['wp:term'].flat();
-       const catTerm = terms.find((t: any) => t.taxonomy === 'danh-muc-du-an');
+       // Look for the specific term IDs requested by user
+       const catTerm = terms.find((t: any) => t.id === 5 || t.id === 6);
        if (catTerm) {
-         categoryId = catTerm.slug;
+         categoryId = String(catTerm.id);
        }
     }
     

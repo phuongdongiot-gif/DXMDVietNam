@@ -136,7 +136,7 @@ const MapPage = () => {
       {/* Show List Button (Visible when carousel is hidden) */}
       {!showCarousel && (
         <button
-          className="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 bg-white text-primary font-bold px-5 py-2.5 rounded-full shadow-lg border border-gray-100 z-[80] flex items-center space-x-2"
+          className="absolute top-[20px] left-1/2 transform -translate-x-1/2 bg-white text-primary font-bold px-5 py-2.5 rounded-full shadow-lg border border-gray-100 z-[80] flex items-center space-x-2"
           onClick={() => setShowCarousel(true)}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,20 +146,12 @@ const MapPage = () => {
         </button>
       )}
 
-      {/* Bottom Carousel Panel */}
+      {/* Top Carousel Panel */}
       <div
-        className={`absolute left-0 right-0 z-[85] transition-transform duration-300 ease-in-out ${showCarousel ? 'translate-y-0' : 'translate-y-full'
-          } bottom-[70px]`}
+        className={`absolute left-0 right-0 z-[85] transition-transform duration-300 ease-in-out ${showCarousel ? 'translate-y-0' : '-translate-y-full'
+          } top-0`}
       >
-        <div className="bg-white/95 backdrop-blur-md shadow-[0_-10px_30px_rgba(0,0,0,0.1)] rounded-t-3xl pt-2 pb-5">
-
-          {/* Close Handle */}
-          <div
-            className="w-full flex justify-center pb-3 pt-1 cursor-pointer"
-            onClick={() => setShowCarousel(false)}
-          >
-            <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
-          </div>
+        <div className="bg-white/95 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-b-3xl pt-4 pb-2">
 
           <div className="px-5 mb-3 flex items-center justify-between">
             <h2 className="text-base font-bold text-gray-900">Dự án trên bản đồ</h2>
@@ -197,6 +189,15 @@ const MapPage = () => {
               </div>
             ))}
           </div>
+
+          {/* Close Handle at the bottom of the panel */}
+          <div
+            className="w-full flex justify-center pt-2 pb-1 cursor-pointer"
+            onClick={() => setShowCarousel(false)}
+          >
+            <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+          </div>
+
         </div>
       </div>
     </Page>
