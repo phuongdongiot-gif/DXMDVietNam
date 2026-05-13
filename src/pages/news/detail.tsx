@@ -45,6 +45,10 @@ export default function NewsDetailPage() {
     .replace(/&#8216;/g, "'")
     .replace(/&#8217;/g, "'");
 
+  const cleanContent = post.content
+    ? post.content.replace(/style\s*=\s*(['"])(.*?)\1/gi, '')
+    : '';
+
   return (
     <Page className="bg-white flex flex-col overflow-y-auto">
       {/* 1. Cover Image */}
@@ -90,7 +94,7 @@ export default function NewsDetailPage() {
             [&_figure]:!max-w-full [&_figure]:!w-auto [&_figure]:!m-0 [&_figure]:!mx-auto [&_figcaption]:text-center [&_figcaption]:text-xs [&_figcaption]:text-gray-500 [&_figcaption]:mt-1
             [&_table]:!max-w-full [&_table]:block [&_table]:overflow-x-auto
           "
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
         />
       </Box>
 
@@ -100,11 +104,6 @@ export default function NewsDetailPage() {
       <Box p={4} className="bg-gray-50 pb-8">
         <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-primary"></div>
-          <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 text-primary">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 16.92V19.92C22 20.4723 21.5523 20.92 21 20.92C10.5066 20.92 2 12.4134 2 1.92C2 1.36772 2.44772 0.920002 3 0.920002H6C6.55228 0.920002 7 1.36772 7 1.92C7 2.42621 7.03964 2.92484 7.11666 3.41164C7.20235 3.95315 7.01979 4.49987 6.61113 4.88785L4.82136 6.58661C6.27362 9.5398 8.4602 11.7264 11.4134 13.1786L13.1121 11.3889C13.5001 10.9802 14.0468 10.7977 14.5884 10.8833C15.0752 10.9604 15.5738 11 16.08 11C16.6323 11 17.08 11.4477 17.08 12V15C17.08 15.5523 17.5277 16 18.08 16H21.08C21.6323 16 22 16.4477 22 16.92Z" fill="currentColor" />
-            </svg>
-          </div>
           <h3 className="font-bold text-gray-900 text-base mb-1.5">Nhận bộ tài liệu dự án</h3>
           <p className="text-[13px] text-gray-500 mb-4 px-2">Bảng giá gốc từ Nhà phát triển, chính sách thanh toán & mặt bằng chi tiết.</p>
           <Button fullWidth onClick={() => navigate('/contact')} size="large" className="rounded-xl font-bold shadow-md shadow-primary/20">

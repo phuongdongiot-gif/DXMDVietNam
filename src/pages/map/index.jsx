@@ -63,9 +63,12 @@ const MapPage = () => {
         L.DomEvent.stopPropagation(e);
         setSelectedProject(project);
         
-        mapRef.current.flyTo([project.lat, project.lng], 13, {
+        // Use a higher zoom level (16) and a slight vertical offset so it's not hidden by the Bottom Sheet
+        // A rough offset of 0.002 degrees south pushes the center down, bringing the marker up on screen
+        const latOffset = 0.002; 
+        mapRef.current.flyTo([project.lat - latOffset, project.lng], 16, {
           animate: true,
-          duration: 1.5
+          duration: 1
         });
       });
     });
@@ -180,9 +183,10 @@ const MapPage = () => {
                 onClick={() => {
                   setSelectedProject(project);
                   if (mapRef.current) {
-                    mapRef.current.flyTo([project.lat, project.lng], 14, {
+                    const latOffset = 0.002;
+                    mapRef.current.flyTo([project.lat - latOffset, project.lng], 16, {
                       animate: true,
-                      duration: 1.5
+                      duration: 1
                     });
                   }
                 }}

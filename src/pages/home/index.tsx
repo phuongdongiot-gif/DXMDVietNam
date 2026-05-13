@@ -14,9 +14,6 @@ const HomePage: React.FunctionComponent = () => {
     <div className="min-h-full bg-[#F4F5F7] pb-8">
       {/* Header Block */}
       <div className="bg-white pb-4 rounded-b-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.04)] animate-fade-in-up relative z-10">
-        <div className="pt-2 px-4">
-          <SearchBar onClick={() => navigate("/search")} />
-        </div>
         <div className="mt-1">
           <Banners />
         </div>
@@ -25,8 +22,13 @@ const HomePage: React.FunctionComponent = () => {
         </div>
       </div>
       
+      {/* Search Bar */}
+      <div className="mt-6 animate-fade-in-up" style={{ animationDelay: '0.05s' }}>
+        <SearchBar onClick={() => navigate("/search")} />
+      </div>
+      
       {/* Main Content Areas */}
-      <div className="px-4 mt-6">
+      <div className="px-4 mt-4">
         <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <Category />
         </div>
