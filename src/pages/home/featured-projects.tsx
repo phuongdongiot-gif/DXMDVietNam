@@ -1,10 +1,11 @@
 import Section from "@/components/section";
 import Carousel from "@/components/carousel";
 import ProductItem from "@/components/product-item";
-import { useProjectStore } from "@/stores/useProjectStore";
+import { useAtomValue } from "jotai";
+import { productsState } from "@/state";
 
 export default function FeaturedProjects() {
-  const products = useProjectStore((s) => s.projects);
+  const products = useAtomValue(productsState);
   const featured = products.slice(0, 4);
 
   const slides = featured.map((product) => (

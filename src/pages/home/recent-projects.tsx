@@ -1,9 +1,10 @@
 import Section from "@/components/section";
 import ProductGrid from "@/components/product-grid";
-import { useProjectStore } from "@/stores/useProjectStore";
+import { useAtomValue } from "jotai";
+import { productsState } from "@/state";
 
 export default function RecentProjects() {
-  const products = useProjectStore((s) => s.projects);
+  const products = useAtomValue(productsState);
   const recent = products.slice(4, 8); // The next 4 projects
 
   // If there are no recent projects, gracefully fall back to first 4 so the UI is visible

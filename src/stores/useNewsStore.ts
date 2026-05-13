@@ -7,6 +7,7 @@ export interface NewsPost {
   content: string;
   imageUrl: string;
   date: string;
+  category: string;
 }
 
 interface NewsStore {
@@ -16,23 +17,32 @@ interface NewsStore {
   fetchPosts: () => Promise<void>;
 }
 
-export const useNewsStore = create<NewsStore>((set) => ({
+export const useNewsStore = create<NewsStore>((set, get) => ({
   posts: [],
   isLoading: false,
   error: null,
   fetchPosts: async () => {
+    if (get().posts.length > 0 || get().isLoading) return;
     set({ isLoading: true });
     try {
-      const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/posts?_embed&per_page=10');
+      const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/posts?_embed&per_page=20');
       const data = await res.json();
-      const mappedPosts = data.map((p: any) => ({
-        id: p.id,
-        title: p.title.rendered.replace(/&#038;/g, '&'),
-        excerpt: p.excerpt.rendered.replace(/<[^>]+>/g, ''),
-        content: p.content.rendered,
-        imageUrl: p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : '',
-        date: p.date
-      }));
+      const mappedPosts = data.map((p: any) => {
+        let categoryName = "Tin tức";
+        if (p._embedded && p._embedded['wp:term'] && p._embedded['wp:term'][0] && p._embedded['wp:term'][0][0]) {
+           categoryName = p._embedded['wp:term'][0][0].name;
+        }
+
+        return {
+          id: p.id,
+          title: p.title.rendered.replace(/&#038;/g, '&'),
+          excerpt: p.excerpt.rendered.replace(/<[^>]+>/g, ''),
+          content: p.content.rendered,
+          imageUrl: p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          date: new Date(p.date).toLocaleDateString("vi-VN"),
+          category: categoryName
+        };
+      });
       set({ posts: mappedPosts, isLoading: false });
     } catch (e) {
       set({ error: "Lỗi tải tin tức", isLoading: false });

@@ -9,6 +9,18 @@ export default function NewsDetailPage() {
   const navigate = useNavigate();
   const post = useNewsStore((s) => s.posts.find(p => p.id === Number(id)));
 
+  React.useEffect(() => {
+    if (post) {
+      // Strip HTML from title if present
+      const rawTitle = post.title.replace(/<[^>]+>/g, '');
+      document.title = `${rawTitle} - DXMD Vietnam`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', post.excerpt || `Bài viết: ${rawTitle}`);
+      }
+    }
+  }, [post]);
+
   if (!post) {
     return (
       <Page className="bg-white flex flex-col items-center justify-center h-full">

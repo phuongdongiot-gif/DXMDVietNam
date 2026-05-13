@@ -1,9 +1,10 @@
 import Section from "@/components/section";
 import TransitionLink from "@/components/transition-link";
-import { useProjectStore } from "@/stores/useProjectStore";
+import { useAtomValue } from "jotai";
+import { categoriesState } from "@/state";
 
 export default function Category() {
-  const categories = useProjectStore(s => s.categories);
+  const categories = useAtomValue(categoriesState) || [];
 
   return (
     <Section title="Loại hình Dự án" viewMoreTo="/categories">

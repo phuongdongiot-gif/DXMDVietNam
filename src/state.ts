@@ -29,15 +29,74 @@ export const categoriesStateUpwrapped = unwrap(
 
 export const productsState = atom(async (get) => {
   const categories = await get(categoriesState);
-  const products = await requestWithFallback<
-    (Product & { categoryId: number })[]
-  >("/products", []);
-  return products.map((product) => ({
-    ...product,
-    category: product.category || categories.find(
-      (category) => category.id === product.categoryId
-    )!,
-  }));
+  
+  try {
+    const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/du-an?_embed&per_page=100');
+    const data = await res.json();
+    
+    return data.map((p: any) => {
+      const acf = p.acf || {};
+      const details = [];
+      
+      if (acf.tq_content) {
+        details.push({ title: "Tổng quan", content: acf.tq_content });
+      }
+      if (acf.vt_content) {
+        details.push({ 
+          title: "Vị trí", 
+          content: (acf.vt_img ? `<img src="${acf.vt_img}" class="w-full rounded-lg mb-4 object-cover" />` : "") + acf.vt_content 
+        });
+      }
+      if (acf.mb_content) {
+        details.push({ 
+          title: "Mặt bằng", 
+          content: (acf.mb_img ? `<img src="${acf.mb_img}" class="w-full rounded-lg mb-4 object-cover" />` : "") + acf.mb_content 
+        });
+      }
+      if (acf.ti_desc) {
+        details.push({ title: "Tiện ích", content: acf.ti_desc });
+      }
+      if (acf.sp_desc) {
+        details.push({ title: "Thiết kế", content: acf.sp_desc });
+      }
+      if (acf.link_page || acf.gt_web) {
+        details.push({ title: "Website", content: acf.link_page || acf.gt_web });
+      }
+
+      let lat, lng;
+      if (acf.vị_tri) {
+        const coords = acf.vị_tri.split(',').map((c: string) => parseFloat(c.trim()));
+        if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+          lat = coords[0];
+          lng = coords[1];
+        }
+      }
+
+      let categoryName = "Căn hộ Cao cấp";
+      if (p._embedded && p._embedded['wp:term']) {
+         const terms = p._embedded['wp:term'].flat();
+         if (terms.length > 0) {
+           categoryName = terms[0].name;
+         }
+      }
+      
+      const category = categories.find(c => c.name === categoryName) || categories[0] || { id: 1, name: categoryName, image: '' };
+
+      return {
+        id: p.id,
+        name: p.title.rendered.replace(/&#038;/g, '&'),
+        price: 0, 
+        image: p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: category,
+        details: details,
+        lat,
+        lng
+      };
+    });
+  } catch (error) {
+    console.error("Error fetching projects from WP API", error);
+    return [];
+  }
 });
 
 export const flashSaleProductsState = atom((get) => get(productsState));

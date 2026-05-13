@@ -5,14 +5,7 @@ import { Suspense } from "react";
 import { PageSkeleton } from "./skeleton";
 import { Toaster } from "react-hot-toast";
 import { ScrollRestoration } from "./scroll-restoration";
-import { useProjectStore } from "@/stores/useProjectStore";
-import { useEffect } from "react";
-
 export default function Layout() {
-  const fetchData = useProjectStore(s => s.fetchData);
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div className="w-screen h-screen flex flex-col bg-background text-foreground">
