@@ -91,10 +91,10 @@ const MapPage = () => {
       {selectedProject && (
         <>
           <div
-            className="absolute inset-0 bg-black/5 z-[90] transition-opacity"
+            className="fixed inset-0 bg-black/5 z-[9990] transition-opacity"
             onClick={() => setSelectedProject(null)}
           ></div>
-          <div className="absolute bottom-0 left-0 right-0 z-[100] bg-white rounded-t-[32px] shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-fade-in-up pb-[max(20px,env(safe-area-inset-bottom))]">
+          <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white rounded-t-[32px] shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-fade-in-up pb-[max(20px,env(safe-area-inset-bottom))]">
             {/* Drag Handle */}
             <div 
               className="w-full flex justify-center pt-3 pb-3 cursor-pointer"
