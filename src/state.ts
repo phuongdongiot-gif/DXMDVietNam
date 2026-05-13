@@ -82,15 +82,21 @@ export const productsState = atom(async (get) => {
       
       const category = categories.find(c => c.name === categoryName) || categories[0] || { id: 1, name: categoryName, image: '' };
 
+      const imageUrl = p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
       return {
         id: p.id,
         name: p.title.rendered.replace(/&#038;/g, '&'),
-        price: 0, 
-        image: p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        price: acf.gia_ban ? parseInt(acf.gia_ban) : 0, 
+        image: imageUrl,
         category: category,
         details: details,
         lat,
-        lng
+        lng,
+        developer: acf.chu_dau_tu || "DXMD Vietnam",
+        address: acf.dia_chi || "Đang cập nhật",
+        status: acf.tinh_trang || "Đang mở bán",
+        scale: acf.quy_mo || "Đang cập nhật"
       };
     });
   } catch (error) {
@@ -165,4 +171,32 @@ export const searchResultState = atom(async (get) => {
   return products.filter((product) =>
     product.name.toLowerCase().includes(keyword.toLowerCase())
   );
+});
+
+export interface GalleryItem {
+  id: number;
+  title: string;
+  images: string[];
+  cover: string;
+}
+
+export const galleryState = atom(async () => {
+  try {
+    const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/thu-vien?_embed&per_page=10');
+    const data = await res.json();
+    
+    return data.map((p: any) => {
+      const acf = p.acf || {};
+      const cover = p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : (acf.list_img && acf.list_img.length > 0 ? acf.list_img[0] : '');
+      return {
+        id: p.id,
+        title: p.title.rendered.replace(/&#038;/g, '&'),
+        images: acf.list_img || [],
+        cover: cover
+      };
+    });
+  } catch (error) {
+    console.error("Error fetching gallery from WP API", error);
+    return [];
+  }
 });

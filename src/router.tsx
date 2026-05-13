@@ -9,6 +9,9 @@ import SearchPage from "@/pages/search";
 import MapPage from "@/pages/map";
 import NewsPage from "@/pages/news";
 import NewsDetailPage from "@/pages/news/detail";
+import GalleryListPage from "@/pages/gallery/index";
+import GalleryDetailPage from "@/pages/gallery/detail";
+import WebviewPage from "@/pages/webview/index";
 import { createBrowserRouter } from "react-router-dom";
 import { getBasePath } from "@/utils/zma";
 
@@ -95,6 +98,27 @@ const router = createBrowserRouter(
           element: <NewsDetailPage />,
           handle: {
             title: "Chi tiết bài viết",
+          },
+        },
+        {
+          path: "/webview",
+          element: <WebviewPage />,
+          handle: {
+            title: "Tuyển dụng DXMD",
+          },
+        },
+        {
+          path: "/gallery",
+          element: <GalleryListPage />,
+          handle: {
+            title: "Tất cả thư viện",
+          },
+        },
+        {
+          path: "/gallery/:id",
+          element: <GalleryDetailPage />,
+          handle: {
+            title: "Thư viện ảnh",
           },
         },
       ],

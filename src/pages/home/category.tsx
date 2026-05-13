@@ -7,25 +7,25 @@ export default function Category() {
   const categories = useAtomValue(categoriesState) || [];
 
   return (
-    <Section title="Loại hình Dự án" viewMoreTo="/categories">
-      <div className="pt-3 pb-5 overflow-x-auto px-4 hide-scrollbar">
-        <div className="grid grid-rows-2 grid-flow-col gap-x-4 gap-y-4 auto-cols-[85px]">
+    <Section title="Loại hình Dự án">
+      <div className="px-4 pb-4">
+        <div className="grid grid-cols-2 gap-4">
           {categories.map((category) => (
             <TransitionLink
               key={category.id}
-              className="flex flex-col items-center cursor-pointer group active:scale-95 transition-transform duration-200"
+              className="relative flex flex-col items-center justify-center cursor-pointer group active:scale-95 transition-transform duration-200 rounded-2xl overflow-hidden shadow-sm aspect-square"
               to={`/category/${category.id}`}
             >
-              <div className="w-[85px] h-[85px] rounded-2xl overflow-hidden shadow-sm border border-secondary/20 bg-skeleton relative">
-                <img
-                  src={category.image}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  alt={category.name}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-              </div>
-              <div className="mt-2 text-center text-xs font-medium w-full line-clamp-2 text-foreground">
-                {category.name}
+              <img
+                src={category.image}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                alt={category.name}
+              />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300"></div>
+              <div className="relative z-10 text-center px-2">
+                <div className="text-white font-bold text-lg md:text-xl uppercase tracking-wider drop-shadow-md">
+                  {category.name}
+                </div>
               </div>
             </TransitionLink>
           ))}

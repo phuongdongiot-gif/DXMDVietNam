@@ -8,6 +8,12 @@ export interface Product {
   details?: Detail[];
   sizes?: Size[];
   colors?: Color[];
+  lat?: number;
+  lng?: number;
+  developer?: string;
+  address?: string;
+  status?: string;
+  scale?: string;
 }
 
 export interface Category {

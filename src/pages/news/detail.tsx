@@ -30,36 +30,86 @@ export default function NewsDetailPage() {
     );
   }
 
+  // Decode basic HTML entities and strip tags for clean text
+  const cleanExcerpt = post.excerpt 
+    ? post.excerpt.replace(/<[^>]+>/g, '').replace(/\[&hellip;\]/g, '...').replace(/&nbsp;/g, ' ') 
+    : '';
+  
+  const cleanTitle = post.title
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#038;/g, '&')
+    .replace(/&#8211;/g, '-')
+    .replace(/&#8212;/g, '--')
+    .replace(/&#8220;/g, '"')
+    .replace(/&#8221;/g, '"')
+    .replace(/&#8216;/g, "'")
+    .replace(/&#8217;/g, "'");
+
   return (
-    <Page className="bg-white flex flex-col">
-      <div className="w-full h-56 relative">
+    <Page className="bg-white flex flex-col overflow-y-auto">
+      {/* 1. Cover Image */}
+      <div className="w-full aspect-video relative bg-skeleton">
         <img 
           src={post.imageUrl || "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"} 
-          alt={post.title} 
+          alt={cleanTitle} 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-          <Text className="text-white font-bold" size="xLarge" style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>
-            {post.title}
-          </Text>
-        </div>
       </div>
       
-      <Box p={4}>
-        <Text size="small" className="text-subtitle mb-4">
-          Đăng ngày: {new Date(post.date).toLocaleDateString('vi-VN')}
-        </Text>
+      <Box p={4} className="bg-white">
+        {/* 2. Header */}
+        <h1 className="text-[20px] font-bold text-gray-900 leading-snug mb-3">
+          {cleanTitle}
+        </h1>
         
+        <div className="flex items-center text-xs text-gray-500 mb-5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mr-1.5"><path d="M8 2V5M16 2V5M3.5 9.09H20.5M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          {new Date(post.date).toLocaleDateString('vi-VN')}
+        </div>
+
+        {/* 3. Sapo (Excerpt Box) */}
+        {cleanExcerpt && (
+          <div className="bg-[#f0f7ff] border-l-4 border-primary p-3 rounded-r-lg mb-6 shadow-sm">
+            <p className="text-[14px] font-medium text-gray-700 leading-relaxed italic">
+              {cleanExcerpt}
+            </p>
+          </div>
+        )}
+        
+        {/* 4. Main Content - Bulletproof Responsive CSS against WP junk */}
         <div 
-          className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
+          className="
+            text-gray-800 leading-relaxed text-[15px]
+            [&_img]:!max-w-full [&_img]:!h-auto [&_img]:rounded-lg [&_img]:my-4 [&_img]:mx-auto [&_img]:shadow-sm [&_img]:object-contain
+            [&_iframe]:!max-w-full [&_iframe]:!w-full [&_iframe]:aspect-video [&_iframe]:rounded-lg [&_iframe]:my-4
+            [&_p]:mb-4 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-3
+            [&_h3]:text-base [&_h3]:font-bold [&_h3]:mt-5 [&_h3]:mb-2
+            [&_a]:text-primary [&_a]:underline
+            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4
+            [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-4
+            [&_figure]:!m-0 [&_figure]:!w-full [&_figcaption]:text-center [&_figcaption]:text-xs [&_figcaption]:text-gray-500 [&_figcaption]:mt-1
+          "
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </Box>
+      
       <HorizontalDivider />
-      <Box p={4}>
-        <Button fullWidth onClick={() => navigate('/contact')}>
-          Nhận tư vấn dự án
-        </Button>
+      
+      {/* 5. Sticky/Floating CTA Box */}
+      <Box p={4} className="bg-gray-50 pb-8">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-primary"></div>
+          <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 text-primary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 16.92V19.92C22 20.4723 21.5523 20.92 21 20.92C10.5066 20.92 2 12.4134 2 1.92C2 1.36772 2.44772 0.920002 3 0.920002H6C6.55228 0.920002 7 1.36772 7 1.92C7 2.42621 7.03964 2.92484 7.11666 3.41164C7.20235 3.95315 7.01979 4.49987 6.61113 4.88785L4.82136 6.58661C6.27362 9.5398 8.4602 11.7264 11.4134 13.1786L13.1121 11.3889C13.5001 10.9802 14.0468 10.7977 14.5884 10.8833C15.0752 10.9604 15.5738 11 16.08 11C16.6323 11 17.08 11.4477 17.08 12V15C17.08 15.5523 17.5277 16 18.08 16H21.08C21.6323 16 22 16.4477 22 16.92Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 className="font-bold text-gray-900 text-base mb-1.5">Nhận bộ tài liệu dự án</h3>
+          <p className="text-[13px] text-gray-500 mb-4 px-2">Bảng giá gốc từ chủ đầu tư, chính sách thanh toán & mặt bằng chi tiết.</p>
+          <Button fullWidth onClick={() => navigate('/contact')} size="large" className="rounded-xl font-bold shadow-md shadow-primary/20">
+            Liên hệ tư vấn ngay
+          </Button>
+        </div>
       </Box>
     </Page>
   );
