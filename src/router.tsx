@@ -29,7 +29,7 @@ const router = createBrowserRouter(
           path: "/categories",
           element: <CategoryListPage />,
           handle: {
-            title: "Danh mục dự án",
+            title: "Dự án",
             back: false,
           },
         },
@@ -37,7 +37,7 @@ const router = createBrowserRouter(
           path: "/contact",
           element: <ContactPage />,
           handle: {
-            title: "Nhận tư vấn",
+            title: "Liên hệ DXMD",
           },
         },
         {
@@ -51,7 +51,7 @@ const router = createBrowserRouter(
           path: "/flash-sales",
           element: <ProductListPage />,
           handle: {
-            title: "Flash Sales",
+            title: "Dự án Nổi bật",
           },
         },
         {
@@ -73,7 +73,7 @@ const router = createBrowserRouter(
           path: "/search",
           element: <SearchPage />,
           handle: {
-            title: "Tìm kiếm",
+            title: "Tìm kiếm dự án",
           },
         },
         {

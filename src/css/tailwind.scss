@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --primary: #3459a7;
-  --secondary: #ebedef;
-  --background: #ffffff;
-  --foreground: #0d0d0d;
-  --section: #f7f7f8;
+  --primary: #1C5A96; /* DXMD Dark Blue */
+  --secondary: #26ADE4; /* DXMD Cyan */
+  --accent: #F38B2B; /* DXMD Orange */
+  --background: #f8f9fa; /* Lighter background for real estate feel */
+  --foreground: #1a1f24;
+  --section: #ffffff;
   --inactive: #a9adb2;
-  --tabIndicator: #212121;
+  --tabIndicator: #1C5A96;
   --subtitle: #6f7071;
-  --danger: #f50000;
+  --danger: #e74c3c;
   --skeleton: #ebedef;
 }
 

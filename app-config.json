@@ -1,11 +1,11 @@
 {
   "appid": "1626448212471942259",
   "version": "1.0.0",
-  "description": "A clothing store mini app",
+  "description": "Cổng thông tin dự án bất động sản cao cấp từ Đất Xanh Miền Đông (DXMD Vietnam)",
   "icon": "icon.png",
   "splashscreen": "splashscreen.png",
   "app": {
-    "title": "Clothing store",
+    "title": "DXMD Vietnam - Bất động sản",
     "textColor": "black",
     "headerColor": "#ffffff",
     "statusBar": "normal",
@@ -18,7 +18,7 @@
   "listSyncJS": [],
   "listAsyncJS": [],
   "template": {
-    "name": "zaui-fashion",
+    "name": "dxmd-real-estate",
     "apiUrl": "",
     "oaIDtoOpenChat": "4318657068771012646"
   }

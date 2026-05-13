@@ -6,7 +6,7 @@ export default function FlashSales() {
   const products = useProjectStore(s => s.projects);
 
   return (
-    <Section title="Dự án nổi bật" viewMoreTo="/flash-sales">
+    <Section title="Dự án Nổi bật" viewMoreTo="/flash-sales">
       <ProductGrid products={products} />
     </Section>
   );

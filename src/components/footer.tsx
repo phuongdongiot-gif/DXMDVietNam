@@ -1,7 +1,5 @@
-import { CartIcon, CategoryIcon, HomeIcon, ProfileIcon, MapIcon } from "./vectors";
+import { CategoryIcon, HomeIcon, MapIcon, CustomerSupportIcon, OrderHistoryIcon } from "./vectors";
 import HorizontalDivider from "./horizontal-divider";
-import { useAtomValue } from "jotai";
-import { cartState } from "@/state";
 import TransitionLink from "./transition-link";
 
 const NAV_ITEMS = [
@@ -11,27 +9,9 @@ const NAV_ITEMS = [
     icon: HomeIcon,
   },
   {
-    name: "Danh mục",
+    name: "Dự án",
     path: "/categories",
     icon: CategoryIcon,
-  },
-  {
-    name: "Tư vấn",
-    path: "/contact",
-    icon: (props) => {
-      const cart = useAtomValue(cartState);
-
-      return (
-        <div className="relative">
-          {cart.length > 0 && (
-            <div className="absolute top-0 left-[18px] h-4 px-1.5 pt-[1.5px] pb-[0.5px] rounded-full bg-[#FF3333] text-white text-[10px] leading-[14px] font-medium shadow-[0_0_0_2px_white]">
-              {cart.length > 9 ? "9+" : cart.length}
-            </div>
-          )}
-          <CartIcon {...props} />
-        </div>
-      );
-    },
   },
   {
     name: "Bản đồ",
@@ -41,7 +21,12 @@ const NAV_ITEMS = [
   {
     name: "Tin tức",
     path: "/news",
-    icon: ProfileIcon,
+    icon: OrderHistoryIcon, // using this as a document/news icon
+  },
+  {
+    name: "Liên hệ",
+    path: "/contact",
+    icon: CustomerSupportIcon,
   },
 ];
 
@@ -53,7 +38,7 @@ export default function Footer() {
         className="w-full px-4 pt-2 grid"
         style={{
           gridTemplateColumns: `repeat(${NAV_ITEMS.length}, 1fr)`,
-          paddingBottom: `max(16px, env(safe-area-inset-bottom)`,
+          paddingBottom: `max(16px, env(safe-area-inset-bottom))`,
         }}
       >
         {NAV_ITEMS.map((item) => {
@@ -61,14 +46,14 @@ export default function Footer() {
             <TransitionLink
               to={item.path}
               key={item.path}
-              className="flex flex-col items-center space-y-0.5 p-1 pb-0.5 cursor-pointer active:scale-105"
+              className="flex flex-col items-center space-y-0.5 p-1 pb-0.5 cursor-pointer active:scale-105 transition-transform"
             >
               {({ isActive }) => (
                 <>
                   <div className="w-6 h-6 flex justify-center items-center">
                     <item.icon active={isActive} />
                   </div>
-                  <div className={`text-2xs ${isActive ? "text-primary" : ""}`}>
+                  <div className={`text-2xs font-medium ${isActive ? "text-primary" : "text-subtitle"}`}>
                     {item.name}
                   </div>
                 </>
