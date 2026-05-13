@@ -80,14 +80,15 @@ export default function NewsDetailPage() {
         <div 
           className="
             text-gray-800 leading-relaxed text-[15px]
-            [&_img]:!max-w-full [&_img]:!h-auto [&_img]:rounded-lg [&_img]:my-4 [&_img]:mx-auto [&_img]:shadow-sm [&_img]:object-contain
+            [&_img]:!max-w-full [&_img]:!w-auto [&_img]:!h-auto [&_img]:rounded-lg [&_img]:my-4 [&_img]:mx-auto [&_img]:shadow-sm [&_img]:object-contain
             [&_iframe]:!max-w-full [&_iframe]:!w-full [&_iframe]:aspect-video [&_iframe]:rounded-lg [&_iframe]:my-4
             [&_p]:mb-4 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-3
             [&_h3]:text-base [&_h3]:font-bold [&_h3]:mt-5 [&_h3]:mb-2
             [&_a]:text-primary [&_a]:underline
             [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4
             [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-4
-            [&_figure]:!m-0 [&_figure]:!w-full [&_figcaption]:text-center [&_figcaption]:text-xs [&_figcaption]:text-gray-500 [&_figcaption]:mt-1
+            [&_figure]:!max-w-full [&_figure]:!w-auto [&_figure]:!m-0 [&_figure]:!mx-auto [&_figcaption]:text-center [&_figcaption]:text-xs [&_figcaption]:text-gray-500 [&_figcaption]:mt-1
+            [&_table]:!max-w-full [&_table]:block [&_table]:overflow-x-auto
           "
           dangerouslySetInnerHTML={{ __html: post.content }}
         />

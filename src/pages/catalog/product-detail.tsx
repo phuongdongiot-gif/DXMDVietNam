@@ -182,7 +182,13 @@ export default function ProductDetailPage() {
              </div>
           ) : (
              <div 
-                className="prose prose-sm prose-img:rounded-xl prose-img:shadow-sm max-w-none text-foreground/80 leading-relaxed"
+                className="
+                  prose prose-sm max-w-none text-foreground/80 leading-relaxed
+                  [&_img]:!max-w-full [&_img]:!w-auto [&_img]:!h-auto [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:mx-auto [&_img]:my-4 [&_img]:object-contain
+                  [&_figure]:!max-w-full [&_figure]:!w-auto [&_figure]:!m-0 [&_figure]:!mx-auto
+                  [&_iframe]:!max-w-full [&_iframe]:!w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl
+                  [&_table]:!max-w-full [&_table]:block [&_table]:overflow-x-auto
+                "
                 dangerouslySetInnerHTML={{ __html: activeContent }}
              />
           )}

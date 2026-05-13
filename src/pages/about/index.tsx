@@ -78,8 +78,13 @@ export default function AboutPage() {
           {/* Intro Content */}
           <Box p={4} className="bg-white shadow-sm mb-2 border-b border-gray-100">
             <div 
-              className="text-gray-700 text-[14.5px] leading-relaxed 
-                [&_p]:mb-3 [&_strong]:text-primary [&_a]:text-secondary"
+              className="
+                text-gray-700 text-[14.5px] leading-relaxed 
+                [&_p]:mb-3 [&_strong]:text-primary [&_a]:text-secondary
+                [&_img]:!max-w-full [&_img]:!w-auto [&_img]:!h-auto [&_img]:rounded-lg [&_img]:object-contain
+                [&_figure]:!max-w-full [&_figure]:!w-auto [&_figure]:!m-0 [&_figure]:!mx-auto
+                [&_iframe]:!max-w-full [&_iframe]:!w-full [&_iframe]:aspect-video
+              "
               dangerouslySetInnerHTML={{ __html: data.content }}
             />
             {data.author && (
