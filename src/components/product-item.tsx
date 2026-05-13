@@ -35,13 +35,13 @@ export default function ProductItem(props: ProductItemProps) {
               alt={props.product.name}
             />
             {/* Category Badge with Glassmorphism */}
-            <div className="absolute top-2 left-2 px-2 py-1 glassmorphism bg-black/30 rounded-md text-[10px] text-white font-medium uppercase tracking-wider shadow-sm">
+            <div className="absolute top-2 left-2 px-2 py-1 glassmorphism bg-black/30 rounded-md text-[10px] text-blue-600 font-medium uppercase tracking-wider shadow-sm">
               {props.product.category?.name || "Dự án"}
             </div>
-            
+
             {/* Dark gradient at the bottom of the image for text readability */}
             <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            
+
             <div className="absolute bottom-3 left-3 right-3">
               <h3 className="text-[15px] font-bold text-white truncate drop-shadow-md">
                 {props.product.name}

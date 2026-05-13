@@ -49,7 +49,7 @@ const QuickActions: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-2 px-4 py-5 bg-white relative z-10 rounded-t-3xl -mt-4 shadow-[0_-8px_20px_rgba(0,0,0,0.08)] border-b border-gray-50">
+    <div className="grid grid-cols-4 gap-2 py-3 bg-transparent relative z-10">
       {actions.map((action) => (
         <div 
           key={action.id} 

@@ -1,7 +1,8 @@
-import ProductGrid from "@/components/product-grid";
 import { useAtomValue } from "jotai";
 import { useMemo } from "react";
 import { productsState } from "@/state";
+import Carousel from "@/components/carousel";
+import ProductItem from "@/components/product-item";
 
 export interface RelatedProductsProps {
   currentProductId: number;
@@ -14,5 +15,12 @@ export default function RelatedProducts(props: RelatedProductsProps) {
     [products, props.currentProductId]
   );
 
-  return <ProductGrid replace products={otherProducts} />;
+  return (
+    <Carousel 
+      itemsPerView={2} 
+      slides={otherProducts.map(product => (
+        <ProductItem key={product.id} product={product} replace />
+      ))}
+    />
+  );
 }

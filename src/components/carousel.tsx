@@ -53,33 +53,39 @@ export const useDotButton = (
 export interface CarouselProps {
   slides: ReactNode[];
   disabled?: boolean;
+  itemsPerView?: 1 | 2 | "auto";
 }
 
-export default function Carousel(props: CarouselProps) {
+export default function Carousel({ slides, disabled, itemsPerView = 1 }: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ active: !props.disabled }),
+    Autoplay({ active: !disabled }),
   ]);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
+  const getBasisClass = () => {
+    if (itemsPerView === 2) return "basis-1/2";
+    if (itemsPerView === "auto") return "basis-auto";
+    return "basis-full";
+  };
+
   return (
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
-        {props.slides.map((slide, i) => (
-          <div key={i} className="flex-none basis-full p-4 pb-0">
+        {slides.map((slide, i) => (
+          <div key={i} className={`flex-none ${getBasisClass()} p-4 pb-0`}>
             {slide}
           </div>
         ))}
       </div>
 
-      <div className="py-4 flex justify-center items-center space-x-2">
+      <div className="py-2 flex justify-center items-center space-x-2">
         {scrollSnaps.map((_, index) => (
           <button
             key={index}
             onClick={() => onDotButtonClick(index)}
-            className={`rounded-full w-1 h-1 bg-black/10 ${
-              index === selectedIndex && !props.disabled ? "bg-primary" : ""
-            }`}
+            className={`rounded-full w-1 h-1 bg-black/10 ${index === selectedIndex && !disabled ? "bg-primary" : ""
+              }`}
           />
         ))}
       </div>

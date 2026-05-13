@@ -4,6 +4,7 @@ import { useNewsStore } from "@/stores/useNewsStore";
 import { useNavigate } from "react-router-dom";
 import Carousel from "@/components/carousel";
 import TransitionLink from "@/components/transition-link";
+import api from "zmp-sdk";
 
 const NEWS_CATEGORIES = ["Tất cả", "Tin tức dự án", "Tin DXMD Vietnam"];
 
@@ -11,6 +12,18 @@ export default function NewsPage() {
   const { posts, isLoading, fetchPosts } = useNewsStore();
   const navigate = useNavigate();
   const [activeCat, setActiveCat] = useState(NEWS_CATEGORIES[0]);
+
+  const handleChat = () => {
+    try {
+      api.openChat({
+        type: "oa",
+        id: import.meta.env.VITE_ZALO_OA_ID || "0",
+        message: "Tôi muốn đăng ký nhận thông tin mới nhất về các dự án và bảng giá từ DXMD Vietnam.",
+      });
+    } catch (error) {
+      navigate("/contact");
+    }
+  };
 
   useEffect(() => {
     fetchPosts();
@@ -36,10 +49,10 @@ export default function NewsPage() {
       to={`/news/${post.id}`}
       className="block w-full h-[220px] rounded-2xl overflow-hidden relative shadow-md"
     >
-      <img 
-        src={post.imageUrl || "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"} 
-        alt={post.title} 
-        className="w-full h-full object-cover" 
+      <img
+        src={post.imageUrl || "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"}
+        alt={post.title}
+        className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
       <div className="absolute top-3 left-3 bg-primary/90 text-white text-[10px] uppercase font-bold px-2 py-1 rounded backdrop-blur-sm">
@@ -49,8 +62,8 @@ export default function NewsPage() {
         <h3 className="text-white font-bold text-sm line-clamp-2 leading-snug drop-shadow-md" dangerouslySetInnerHTML={{ __html: post.title }} />
         <div className="text-white/80 text-[10px] mt-1 flex items-center">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           {post.date}
         </div>
@@ -67,7 +80,7 @@ export default function NewsPage() {
         <Text size="small" className="text-subtitle mb-2">
           Cập nhật thị trường mới nhất từ DXMD Vietnam
         </Text>
-        
+
         {/* Breaking News Bar */}
         {posts.length > 0 && (
           <div className="flex items-center bg-accent/10 border border-accent/20 rounded-lg p-2 mb-2 animate-fade-in">
@@ -86,11 +99,10 @@ export default function NewsPage() {
             <div
               key={cat}
               onClick={() => setActiveCat(cat)}
-              className={`flex-none px-4 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-colors ${
-                activeCat === cat 
-                  ? "bg-primary text-white shadow-sm" 
-                  : "bg-section text-subtitle border border-secondary/20"
-              }`}
+              className={`flex-none px-4 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-colors ${activeCat === cat
+                ? "bg-primary text-white shadow-sm"
+                : "bg-section text-subtitle border border-secondary/20"
+                }`}
             >
               {cat}
             </div>
@@ -102,7 +114,7 @@ export default function NewsPage() {
         {isLoading && posts.length === 0 ? (
           <div className="p-4 space-y-4">
             <div className="w-full h-[220px] bg-skeleton animate-pulse rounded-2xl"></div>
-            {Array.from({length: 4}).map((_, i) => (
+            {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="w-full h-24 bg-skeleton animate-pulse rounded-xl"></div>
             ))}
           </div>
@@ -110,7 +122,7 @@ export default function NewsPage() {
           <div className="text-center text-subtitle py-10">Không có bài viết nào trong chuyên mục này.</div>
         ) : (
           <div className="space-y-6 mt-3">
-            
+
             {/* 1. Featured News Carousel */}
             {heroPosts.length > 0 && (
               <div className="px-4">
@@ -122,7 +134,7 @@ export default function NewsPage() {
             {trendingPosts.length > 0 && (
               <div className="pt-2 px-4">
                 <h3 className="font-bold text-foreground text-sm mb-3 flex items-center">
-                  <span className="text-accent mr-1">⚡</span> Đáng chú ý
+                  <span className="text-accent mr-1"></span> Đáng chú ý
                 </h3>
                 <div className="flex overflow-x-auto space-x-3 hide-scrollbar pb-2">
                   {trendingPosts.map((post) => (
@@ -164,7 +176,7 @@ export default function NewsPage() {
             {topRankingPosts.length > 0 && (
               <div className="px-4">
                 <h3 className="font-bold text-foreground text-sm mb-3 flex items-center">
-                  <span className="text-accent mr-1">📈</span> Đọc nhiều nhất
+                  <span className="text-accent mr-1"></span> Đọc nhiều nhất
                 </h3>
                 <div className="space-y-3">
                   {topRankingPosts.map((post, idx) => (
@@ -177,7 +189,7 @@ export default function NewsPage() {
                         <div className="text-[10px] text-subtitle">{post.date}</div>
                       </div>
                       <div className="w-16 h-16 rounded overflow-hidden flex-none ml-2 bg-skeleton">
-                         <img src={post.imageUrl} className="w-full h-full object-cover" alt="" />
+                        <img src={post.imageUrl} className="w-full h-full object-cover" alt="" />
                       </div>
                     </TransitionLink>
                   ))}
@@ -189,7 +201,7 @@ export default function NewsPage() {
             {gridPosts.length > 0 && (
               <div className="px-4">
                 <h3 className="font-bold text-foreground text-sm mb-3 flex items-center">
-                  <span className="text-primary mr-1">☷</span> Bất động sản
+                  <span className="text-primary mr-1"></span> Bất động sản
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {gridPosts.map(post => (
@@ -231,15 +243,18 @@ export default function NewsPage() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
                 <h3 className="font-bold text-lg mb-2 relative z-10">Đừng bỏ lỡ cơ hội đầu tư</h3>
                 <p className="text-xs text-white/90 mb-4 relative z-10">Đăng ký để nhận thông tin mới nhất về các dự án và bảng giá từ DXMD Vietnam.</p>
-                <div className="flex bg-white/20 p-1 rounded-full relative z-10 backdrop-blur-sm border border-white/30">
-                  <input type="text" placeholder="Nhập số điện thoại..." className="bg-transparent text-white placeholder-white/70 text-xs px-3 outline-none flex-1 min-w-0" />
-                  <button className="bg-accent text-white text-xs font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition-transform">
-                    Nhận tin
-                  </button>
-                </div>
+                <button 
+                  onClick={handleChat}
+                  className="w-full flex items-center justify-center space-x-2 bg-white/20 p-3 rounded-xl relative z-10 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-colors cursor-pointer active:scale-95"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                    <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="currentColor"/>
+                  </svg>
+                  <span className="text-white font-bold text-sm">Nhắn tin nhận thông tin</span>
+                </button>
               </div>
             )}
-            
+
           </div>
         )}
       </div>
