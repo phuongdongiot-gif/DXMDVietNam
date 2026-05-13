@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Banners from "./banners";
+import QuickActions from "./quick-actions";
 import SearchBar from "../../components/search-bar";
 import Category from "./category";
 import FeaturedProjects from "./featured-projects";
@@ -15,9 +16,10 @@ const HomePage: React.FunctionComponent = () => {
       <div className="bg-background pt-2 pb-2">
         <SearchBar onClick={() => navigate("/search")} />
         <Banners />
+        <QuickActions />
       </div>
       
-      <div className="bg-background mt-2">
+      <div className="bg-background">
         <Category />
       </div>
       
