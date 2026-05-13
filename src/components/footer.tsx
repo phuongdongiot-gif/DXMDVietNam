@@ -46,16 +46,19 @@ export default function Footer() {
             <TransitionLink
               to={item.path}
               key={item.path}
-              className="flex flex-col items-center space-y-0.5 p-1 pb-0.5 cursor-pointer active:scale-105 transition-transform"
+              className="group flex flex-col items-center space-y-0.5 p-1 pb-1 cursor-pointer active:scale-[0.95] hover:bg-skeleton/30 rounded-lg transition-all duration-300 relative"
             >
               {({ isActive }) => (
                 <>
-                  <div className="w-6 h-6 flex justify-center items-center">
+                  <div className={`w-6 h-6 flex justify-center items-center transition-transform duration-300 ${isActive ? '-translate-y-1' : 'group-hover:-translate-y-0.5'}`}>
                     <item.icon active={isActive} />
                   </div>
-                  <div className={`text-2xs font-medium ${isActive ? "text-primary" : "text-subtitle"}`}>
+                  <div className={`text-2xs font-medium transition-colors duration-300 ${isActive ? "text-primary font-semibold" : "text-subtitle"}`}>
                     {item.name}
                   </div>
+                  {isActive && (
+                    <div className="absolute bottom-0 w-1 h-1 rounded-full bg-primary animate-scale-in"></div>
+                  )}
                 </>
               )}
             </TransitionLink>

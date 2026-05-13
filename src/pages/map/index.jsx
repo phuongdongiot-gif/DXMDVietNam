@@ -41,18 +41,19 @@ const MapPage = () => {
     validProjects.forEach(project => {
       // Create custom HTML marker using Leaflet's divIcon
       const customIcon = L.divIcon({
-        className: 'bg-transparent border-0', // Remove default Leaflet white square
+        className: 'bg-transparent border-0',
         html: `
-          <div class="cursor-pointer group flex flex-col items-center relative" style="margin-left: -16px; margin-top: -32px;">
-            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-md border-2 border-white transform transition-transform hover:scale-110">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="cursor-pointer group flex flex-col items-center relative" style="margin-left: -16px; margin-top: -36px;">
+            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] border-2 border-white transform transition-all duration-300 group-hover:scale-110 group-hover:bg-accent relative z-10">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="white"/>
               </svg>
             </div>
+            <div class="w-3 h-3 bg-primary rotate-45 transform -translate-y-2 border-r-2 border-b-2 border-white transition-colors duration-300 group-hover:bg-accent group-hover:-translate-y-3 relative z-0"></div>
           </div>
         `,
-        iconSize: [0, 0], // The size is handled by HTML content and margin
-        iconAnchor: [0, 0] // Anchor is handled by negative margin in HTML
+        iconSize: [0, 0],
+        iconAnchor: [0, 0]
       });
 
       const marker = L.marker([project.lat, project.lng], { icon: customIcon })

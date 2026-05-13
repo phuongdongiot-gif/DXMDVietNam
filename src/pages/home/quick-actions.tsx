@@ -56,7 +56,7 @@ const QuickActions: React.FC = () => {
           className="flex flex-col items-center justify-center cursor-pointer active:scale-95 transition-transform"
           onClick={() => navigate(action.path)}
         >
-          <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-2 shadow-sm border border-primary/5 hover:bg-primary/15 transition-colors">
+          <div className="w-12 h-12 bg-primary/5 rounded-[20px] flex items-center justify-center mb-2 shadow-[0_8px_16px_rgba(28,90,150,0.08)] border border-primary/10 hover:bg-primary/10 hover:-translate-y-1 transition-all duration-300">
             {action.icon}
           </div>
           <Text size="xSmall" className="font-semibold text-gray-700 text-center">

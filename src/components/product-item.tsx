@@ -15,7 +15,7 @@ export default function ProductItem(props: ProductItemProps) {
 
   return (
     <TransitionLink
-      className="flex flex-col cursor-pointer group active:scale-[0.98] transition-transform duration-300 ease-out shadow-sm hover:shadow-md rounded-xl overflow-hidden bg-white animate-fade-in-up border border-secondary/20"
+      className="flex flex-col cursor-pointer group active:scale-[0.98] transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1 rounded-xl overflow-hidden bg-white animate-fade-in-up border border-secondary/20"
       to={`/product/${props.product.id}`}
       replace={props.replace}
       onClick={() => setSelected(true)}
