@@ -12,6 +12,7 @@ import NewsDetailPage from "@/pages/news/detail";
 import GalleryListPage from "@/pages/gallery/index";
 import GalleryDetailPage from "@/pages/gallery/detail";
 import WebviewPage from "@/pages/webview/index";
+import AboutPage from "@/pages/about/index";
 import { createBrowserRouter } from "react-router-dom";
 import { getBasePath } from "@/utils/zma";
 
@@ -62,7 +63,7 @@ const router = createBrowserRouter(
           element: <ProductListPage />,
           handle: {
             title: ({ categories, params }) =>
-              categories.find((c) => c.id === Number(params.id))?.name,
+              categories.find((c) => String(c.id) === params.id)?.name,
           },
         },
         {
@@ -105,6 +106,13 @@ const router = createBrowserRouter(
           element: <WebviewPage />,
           handle: {
             title: "Tuyển dụng DXMD",
+          },
+        },
+        {
+          path: "/about",
+          element: <AboutPage />,
+          handle: {
+            title: "Giới thiệu DXMD Vietnam",
           },
         },
         {

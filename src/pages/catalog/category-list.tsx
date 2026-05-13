@@ -12,7 +12,7 @@ export default function CategoryListPage() {
   const products = useAtomValue(productsState);
   
   // Local state for selected category filter. 'all' means show all projects.
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number | 'all'>('all');
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | number | 'all'>('all');
 
   // Filter projects based on selected category
   const filteredProducts = selectedCategoryId === 'all' 
@@ -86,11 +86,6 @@ export default function CategoryListPage() {
                   <div className="bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded shadow-sm">
                     {product.category?.name || "Dự án"}
                   </div>
-                  {product.status && (
-                    <div className="bg-green-500 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded shadow-sm">
-                      {product.status}
-                    </div>
-                  )}
                 </div>
                 
                 {/* Overlay Text */}

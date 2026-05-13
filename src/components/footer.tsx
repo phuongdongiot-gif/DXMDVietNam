@@ -1,4 +1,4 @@
-import { CategoryIcon, HomeIcon, MapIcon, CustomerSupportIcon, OrderHistoryIcon } from "./vectors";
+import { CategoryIcon, HomeIcon, MapIcon, CustomerSupportIcon, NewsIcon } from "./vectors";
 import HorizontalDivider from "./horizontal-divider";
 import TransitionLink from "./transition-link";
 
@@ -21,7 +21,7 @@ const NAV_ITEMS = [
   {
     name: "Tin tức",
     path: "/news",
-    icon: OrderHistoryIcon, // using this as a document/news icon
+    icon: NewsIcon,
   },
   {
     name: "Liên hệ",

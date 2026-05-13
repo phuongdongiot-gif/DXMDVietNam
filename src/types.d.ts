@@ -1,10 +1,11 @@
 export interface Product {
-  id: number;
+  id: string | number;
   name: string;
   price: number;
   originalPrice?: number;
   image: string;
   category: Category;
+  categoryId?: string[];
   details?: Detail[];
   sizes?: Size[];
   colors?: Color[];
@@ -17,9 +18,10 @@ export interface Product {
 }
 
 export interface Category {
-  id: number;
+  id: string | number;
   name: string;
-  image: string;
+  icon?: string;
+  image?: string;
 }
 
 export interface Detail {

@@ -44,7 +44,7 @@ const MapPage = () => {
         className: 'bg-transparent border-0', // Remove default Leaflet white square
         html: `
           <div class="cursor-pointer group flex flex-col items-center relative" style="margin-left: -16px; margin-top: -32px;">
-            <div class="w-8 h-8 bg-[#006A31] rounded-full flex items-center justify-center shadow-md border-2 border-white transform transition-transform hover:scale-110">
+            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-md border-2 border-white transform transition-transform hover:scale-110">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="white"/>
               </svg>

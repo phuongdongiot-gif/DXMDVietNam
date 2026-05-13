@@ -397,6 +397,21 @@ export function PackageIcon() {
   );
 }
 
+export function NewsIcon(props: { active?: boolean }) {
+  if (props.active) {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.89 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.89 20.11 3 19 3ZM11 17H7V15H11V17ZM17 17H13V15H17V17ZM17 13H7V11H17V13ZM17 9H7V7H17V9Z" fill="var(--primary)"/>
+      </svg>
+    );
+  }
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.89 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.89 20.11 3 19 3ZM19 19H5V5H19V19ZM11 15H7V17H11V15ZM17 15H13V17H17V15ZM7 11H17V13H7V11ZM7 7H17V9H7V7Z" fill="#6F7071"/>
+    </svg>
+  );
+}
+
 export function OrderHistoryIcon() {
   return (
     <svg

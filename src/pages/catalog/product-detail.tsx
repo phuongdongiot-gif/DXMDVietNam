@@ -96,11 +96,6 @@ export default function ProductDetailPage() {
                <div className="text-[10px] uppercase tracking-wider font-semibold text-white px-2 py-1 bg-primary rounded shadow-sm">
                   {product.category?.name || "Dự án"}
                </div>
-               {product.status && (
-                 <div className="text-[10px] uppercase tracking-wider font-semibold text-white px-2 py-1 bg-green-500 rounded shadow-sm">
-                    {product.status}
-                 </div>
-               )}
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-white leading-tight drop-shadow-md">
               {product.name}
