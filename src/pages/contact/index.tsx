@@ -16,12 +16,12 @@ const ContactPage: React.FunctionComponent = () => {
         } else if (data && data.acf && data.acf.f_chi_nhanh && data.acf.f_chi_nhanh.length > 0) {
           setAddress(data.acf.f_chi_nhanh[0].address);
         } else {
-          setAddress("Tòa nhà Đất Xanh Miền Đông, 114 Nguyễn Cửu Vân, Phường 17, Quận Bình Thạnh, TP.HCM");
+          setAddress("Số 105 Quốc lộ 13, Phường Hiệp Bình, Tp. HCM, Việt Nam");
         }
       })
       .catch(err => {
         console.error("Error fetching contact options", err);
-        setAddress("Tòa nhà Đất Xanh Miền Đông, 114 Nguyễn Cửu Vân, Phường 17, Quận Bình Thạnh, TP.HCM");
+        setAddress("Số 105 Quốc lộ 13, Phường Hiệp Bình, Tp. HCM, Việt Nam");
       });
   }, []);
 

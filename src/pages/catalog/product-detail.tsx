@@ -71,7 +71,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col bg-background relative">
+    <div className="w-full h-full flex flex-col relative">
       <div className="flex-1 overflow-y-auto">
         <div className="relative">
           <img
@@ -109,17 +109,15 @@ export default function ProductDetailPage() {
             <h1 className="text-xl md:text-2xl font-bold text-white leading-tight drop-shadow-md">
               {product.name}
             </h1>
-            {product.slogan && (
-              <p className="text-sm text-gray-200 mt-1 italic drop-shadow-sm font-medium">
-                {product.slogan}
-              </p>
-            )}
+            <p className="text-sm text-gray-200 mt-1.5 italic drop-shadow-sm font-medium">
+              {product.slogan || "Tâm điểm đầu tư, tinh hoa hội tụ"}
+            </p>
           </div>
         </div>
 
         {/* Quick Stats Grid */}
         <div className="px-4 py-4 grid grid-cols-2 gap-3 bg-white border-b border-gray-100">
-          <div 
+          <div
             className="flex flex-col bg-gray-50/80 p-3 rounded-xl border border-gray-100 cursor-pointer active:scale-95 transition-transform relative group"
             onClick={() => {
               if (product.lat && product.lng) {
@@ -136,7 +134,7 @@ export default function ProductDetailPage() {
               </span>
               <span className="text-[9px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded shadow-sm flex items-center">
                 Xem bản đồ
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" className="ml-0.5"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" className="ml-0.5"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
             </div>
             <span className="text-sm font-semibold text-foreground line-clamp-1">{product.address || "Đang cập nhật"}</span>
@@ -237,19 +235,19 @@ export default function ProductDetailPage() {
       </div>
 
       {/* Floating Action Bar */}
-      <div className="flex-none grid grid-cols-2 gap-3 p-3 bg-white sticky bottom-0 z-50 border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] pb-[max(12px,env(safe-area-inset-bottom))]">
+      <div className="flex-none grid grid-cols-2 gap-3 p-3 sticky bottom-0 z-50 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] pb-[max(12px,env(safe-area-inset-bottom))]">
         <button
-          className="flex items-center justify-center space-x-2 font-bold py-3.5 rounded-xl bg-[#25D366] text-white shadow-md shadow-[#25D366]/30 active:scale-95 transition-transform"
+          className="flex items-center justify-center space-x-2 font-bold py-3 rounded-xl bg-[#f5831f] text-white shadow-md shadow-[#25D366]/30 active:scale-95 transition-transform"
           onClick={handleCall}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z" fill="currentColor" /></svg>
           <span>Gọi ngay</span>
         </button>
         <button
-          className="flex items-center justify-center space-x-2 font-bold py-3.5 rounded-xl bg-[#0068ff] text-white shadow-md shadow-[#0068ff]/30 active:scale-95 transition-transform"
+          className="flex items-center justify-center space-x-2 font-bold py-3 rounded-xl bg-[#0068ff] text-white shadow-md shadow-[#0068ff]/30 active:scale-95 transition-transform"
           onClick={handleChat}
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 13.68 2.42 15.26 3.16 16.65L2 21L6.5 19.92C7.8 20.61 9.35 21 11.02 21C16.54 21 21 16.54 21 11.02C21 5.5 16.54 2 12 2Z" fill="currentColor"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 13.68 2.42 15.26 3.16 16.65L2 21L6.5 19.92C7.8 20.61 9.35 21 11.02 21C16.54 21 21 16.54 21 11.02C21 5.5 16.54 2 12 2Z" fill="currentColor" /></svg>
           <span>Chat Zalo</span>
         </button>
       </div>
