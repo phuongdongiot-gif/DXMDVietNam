@@ -30,6 +30,58 @@ export default function GalleryDetailPage() {
 
   const images = gallery.images || [];
 
+  const isVideo = (url: string) => {
+    if (!url || typeof url !== 'string') return false;
+    return url.toLowerCase().includes('.mp4') || url.toLowerCase().includes('youtube.com') || url.toLowerCase().includes('youtu.be');
+  };
+
+  const renderMedia = (url: string, className: string, isGrid = false) => {
+    if (!url || typeof url !== 'string') return null;
+    if (isVideo(url)) {
+      if (url.includes('youtube') || url.includes('youtu.be')) {
+        let videoId = "";
+        if (url.includes('v=')) {
+          videoId = url.split('v=')[1]?.split('&')[0];
+        } else if (url.includes('youtu.be/')) {
+          videoId = url.split('youtu.be/')[1]?.split('?')[0];
+        }
+        return (
+          <div className="relative w-full h-full">
+            <iframe 
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=${isGrid ? 0 : 1}&mute=${isGrid ? 1 : 0}`} 
+              className={className} 
+              allowFullScreen 
+              frameBorder="0"
+              style={{ pointerEvents: isGrid ? 'none' : 'auto' }}
+            />
+            {isGrid && <div className="absolute inset-0 z-10"></div>}
+          </div>
+        );
+      }
+      return (
+        <div className="relative w-full h-full bg-black">
+          <video 
+            src={url} 
+            className={className} 
+            controls={!isGrid} 
+            autoPlay={!isGrid} 
+            muted={isGrid}
+            playsInline
+            style={{ pointerEvents: isGrid ? 'none' : 'auto' }}
+          />
+          {isGrid && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20">
+              <div className="bg-black/60 rounded-full p-2.5 backdrop-blur-md">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5V19L19 12L8 5Z"/></svg>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+    return <img src={url} className={className} alt="Gallery item" />;
+  };
+
   return (
     <Page className="flex flex-col bg-background h-full relative overflow-y-auto">
       <Box className="bg-white px-4 pt-4 pb-2 border-b border-gray-100">
@@ -37,7 +89,7 @@ export default function GalleryDetailPage() {
           {gallery.title}
         </Text>
         <Text size="small" className="text-subtitle mt-1">
-          {images.length} hình ảnh
+          {images.length} hình ảnh / video
         </Text>
       </Box>
 
@@ -52,11 +104,7 @@ export default function GalleryDetailPage() {
                 setIsOpen(true);
               }}
             >
-              <img 
-                src={img} 
-                alt={`${gallery.title} - ${idx + 1}`} 
-                className="w-full h-full object-cover" 
-              />
+              {renderMedia(img, "w-full h-full object-cover", true)}
             </div>
           ))}
         </div>
@@ -77,11 +125,9 @@ export default function GalleryDetailPage() {
              </button>
           </div>
           
-          <img 
-            src={images[photoIndex]} 
-            className="max-w-full max-h-full object-contain" 
-            alt="Fullscreen view" 
-          />
+          <div className="w-full h-full flex items-center justify-center pt-16 pb-20">
+            {renderMedia(images[photoIndex], "max-w-full max-h-full object-contain", false)}
+          </div>
 
           <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-center z-10">
             <button 
