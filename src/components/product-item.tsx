@@ -46,7 +46,7 @@ export default function ProductItem(props: ProductItemProps) {
               <h3 className="text-[15px] font-bold text-white truncate drop-shadow-md">
                 {props.product.name}
               </h3>
-              <div className="mt-1.5 flex items-center">
+              <div className="flex items-center">
                 <div className="text-[10px] text-white bg-accent/90 px-1 py-0.5 rounded-sm font-medium shadow-sm transition-colors group-hover:bg-accent">
                   Khám phá ngay
                 </div>

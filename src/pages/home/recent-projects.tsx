@@ -5,9 +5,9 @@ import { productsState } from "@/state";
 
 export default function RecentProjects() {
   const products = useAtomValue(productsState);
-  const recent = products.slice(4, 8); // The next 4 projects
+  const recent = products.slice(0, 4); // The 4 newest projects
 
-  // If there are no recent projects, gracefully fall back to first 4 so the UI is visible
+  // If there are no recent projects, gracefully fall back
   const displayProducts = recent.length > 0 ? recent : products.slice(0, 4);
 
   return (
