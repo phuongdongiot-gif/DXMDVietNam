@@ -7,11 +7,11 @@ export default function SplashScreen() {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setIsFading(true);
-    }, 1500);
+    }, 2500);
 
     const timer2 = setTimeout(() => {
       setShow(false);
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer1);
@@ -25,17 +25,46 @@ export default function SplashScreen() {
     <div
       className={`bg-[#0f67b1] fixed inset-0 z-[9999] flex flex-col items-center justify-center transition-opacity duration-500 pointer-events-none ${isFading ? 'opacity-0' : 'opacity-100'}`}
     >
-      <div className="w-56 animate-pulse drop-shadow-md">
+      <div className="w-64 drop-shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" viewBox="0 0 340.73 126.78">
           <defs>
             <style>
-              {`.st0 { fill: #ffffff; } .st1 { fill: #0f67b1; } .st2 { fill: #2cabe1; } .st3 { fill: #f48120; }`}
+              {`
+                .st0 { fill: #ffffff; } 
+                .st1 { fill: #0f67b1; } 
+                .st2 { fill: #2cabe1; } 
+                .st3 { fill: #f48120; }
+                
+                @keyframes triangleAnim {
+                  0% { transform: translateX(117.5px) scale(1.8); opacity: 0; }
+                  15% { transform: translateX(117.5px) scale(1.8); opacity: 1; }
+                  45% { transform: translateX(117.5px) scale(1.8); }
+                  75%, 100% { transform: translateX(0) scale(1); opacity: 1; }
+                }
+                
+                @keyframes textAnim {
+                  0%, 65% { opacity: 0; transform: translateX(-20px); }
+                  85%, 100% { opacity: 1; transform: translateX(0); }
+                }
+                
+                .triangle-group {
+                  animation: triangleAnim 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+                  transform-origin: 52.8px 63.4px;
+                }
+                
+                .text-group {
+                  animation: textAnim 2.5s ease-out forwards;
+                }
+              `}
             </style>
           </defs>
-          <polygon className="st0" points="51.1 36.26 17.2 90.52 20.68 90.52 81.55 90.52 85 90.52 51.1 36.26" />
-          <path className="st2" d="M69.19,72.9c.57-.9.83-1.66,1.02-2.42l-7.94-12.67c-.04.18-.06.2-.1.38-.93,3.69-3.18,8.81-12.99,14.38-23.07,13.11-25.58,14.47-28.54,16.05,0,0,11.17-2.66,35.07-8.35,6.54-1.56,11.37-4.03,13.48-7.36" />
-          <path className="st3" d="M81.56,88.62l-9.97-16c-.2.46-.39.82-.7,1.31-2.36,3.76-7.17,6.69-14.3,8.11-22.5,4.48-26.31,4.93-35.95,6.57h60.91Z" />
-          <path className="st1" d="M20.65,88.62s7.8-5.35,27.57-17.71c6.53-4.08,10.91-8.43,12.16-13.22.25-.97.34-1.68.36-2.46l-9.63-15.35-30.46,48.74Z" />
+          <g className="triangle-group">
+            <polygon className="st0" points="51.1 36.26 17.2 90.52 20.68 90.52 81.55 90.52 85 90.52 51.1 36.26" />
+            <path className="st2" d="M69.19,72.9c.57-.9.83-1.66,1.02-2.42l-7.94-12.67c-.04.18-.06.2-.1.38-.93,3.69-3.18,8.81-12.99,14.38-23.07,13.11-25.58,14.47-28.54,16.05,0,0,11.17-2.66,35.07-8.35,6.54-1.56,11.37-4.03,13.48-7.36" />
+            <path className="st3" d="M81.56,88.62l-9.97-16c-.2.46-.39.82-.7,1.31-2.36,3.76-7.17,6.69-14.3,8.11-22.5,4.48-26.31,4.93-35.95,6.57h60.91Z" />
+            <path className="st1" d="M20.65,88.62s7.8-5.35,27.57-17.71c6.53-4.08,10.91-8.43,12.16-13.22.25-.97.34-1.68.36-2.46l-9.63-15.35-30.46,48.74Z" />
+          </g>
+          <g className="text-group">
           <path className="st0" d="M85.67,44.37h6.78c2.06,0,3.92,1.02,5.56,3.07.81,1.29,1.22,2.56,1.22,3.8v3.39c0,1.68-.67,3.24-1.99,4.7-1.52,1.44-3.11,2.17-4.79,2.17h-6.78c-.38-.08-.6-.3-.68-.68v-15.78c.07-.38.3-.61.68-.68M88.47,47.85v10.17h3.52c1.77,0,2.98-.89,3.62-2.66.09-.35.14-.71.14-1.09v-2.66c0-1.76-.89-2.97-2.67-3.61-.34-.09-.71-.14-1.08-.14h-3.52Z" />
           <path className="st0" d="M105.98,44.42h.41c1.15,0,2.09.66,2.8,1.99l5.47,14.15v.27c-.07.38-.3.6-.68.68h-2.17c-.48,0-.87-.59-1.18-1.77l-1.36-3.35h-4.48c-1.08,3.09-1.67,4.68-1.76,4.79-.19.21-.37.32-.54.32h-2.21c-.38-.08-.6-.3-.68-.68v-.23c0-.17,1.94-5.46,5.83-15.86.22-.21.4-.32.55-.32M106.97,50.47l-.86,2.44h1.85v-.05c-.57-1.5-.9-2.3-.99-2.39" />
           <path className="st0" d="M113.39,44.37h12.89c.38.08.6.3.68.68v.36c0,1.02-.64,1.8-1.9,2.35l-.68.09h-2.8v12.89c-.11.51-.34.77-.68.77h-2.12c-.35,0-.58-.25-.68-.77v-12.89h-2.81c-1.18,0-2.03-.68-2.53-2.03l-.04-.4v-.36c.07-.38.3-.6.67-.68" />
@@ -78,6 +107,7 @@ export default function SplashScreen() {
           <polygon className="st0" points="292.64 79.09 292.64 69.23 294.69 69.23 298.79 76.42 298.79 69.23 300.63 69.23 300.63 79.09 298.6 79.09 294.47 71.92 294.47 79.09 292.64 79.09" />
           <path className="st0" d="M301.7,79.09l4.1-9.86h1.41l4.16,9.86h-2.03l-1.07-2.56h-3.49l-1.09,2.56h-2ZM305.46,74.77h2.11l-1.04-2.99-1.07,2.99Z" />
           <polygon className="st0" points="312.36 79.09 312.36 69.23 314.86 69.23 317.5 76.77 320.17 69.23 322.64 69.23 322.64 79.09 320.83 79.09 320.83 71.7 318.28 79.09 316.72 79.09 314.19 71.71 314.2 79.09 312.36 79.09" />
+          </g>
         </svg>
       </div>
     </div>
