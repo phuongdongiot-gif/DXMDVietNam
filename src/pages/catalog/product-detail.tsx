@@ -6,7 +6,6 @@ import {
   useParams,
 } from "react-router-dom";
 import { productState } from "@/state";
-import ShareButton from "./share-buttont";
 import RelatedProducts from "./related-products";
 import api from "zmp-sdk";
 import toast from "react-hot-toast";
@@ -51,10 +50,26 @@ export default function ProductDetailPage() {
       api.openChat({
         type: "oa",
         id: "656653957756576520",
-        message: `Tôi muốn tư vấn về dự án ${product?.name || ""}`,
+        message: `Tôi muốn nhận thông tin chi tiết, bảng giá và chính sách ưu đãi của dự án ${product?.name || ""}`,
       });
     } catch (error) {
       navigate("/contact");
+    }
+  };
+
+  const handleShare = () => {
+    try {
+      api.openShareSheet({
+        type: "zmp_deep_link",
+        data: {
+          title: product?.name || "Dự án DXMD Vietnam",
+          description: product?.slogan || "Tâm điểm đầu tư, tinh hoa hội tụ",
+          thumbnail: product?.image,
+          path: `/product/${product?.id}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -95,9 +110,18 @@ export default function ProductDetailPage() {
                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <div className="bg-black/40 rounded-full backdrop-blur-md flex">
-              <ShareButton product={product} />
-            </div>
+            <button
+              onClick={handleShare}
+              className="w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-md active:scale-95 transition-transform"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18 22C19.6569 22 21 20.6569 21 19C21 17.3431 19.6569 16 18 16C16.3431 16 15 17.3431 15 19C15 20.6569 16.3431 22 18 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M8.59 13.51L15.42 17.49" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M15.41 6.51L8.59 10.49" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
 
           <div className="absolute bottom-4 left-4 right-4">
