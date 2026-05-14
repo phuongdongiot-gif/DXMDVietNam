@@ -32,7 +32,7 @@ const NAV_ITEMS = [
 
 export default function Footer() {
   return (
-    <div className="bg-white/80 backdrop-blur-xl border-t border-black/5 pb-[max(12px,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.04)] relative z-40">
+    <div className="bg-white border-t border-black/5 pb-[max(12px,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.04)] relative z-40" style={{ viewTransitionName: 'app-footer' }}>
       <div
         className="w-full px-2 pt-2 flex justify-between items-center"
       >

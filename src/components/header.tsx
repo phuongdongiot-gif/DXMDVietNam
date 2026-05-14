@@ -31,14 +31,14 @@ export default function Header() {
 
   if (handle?.logo) {
     return (
-      <div className="h-14 w-full flex items-center px-4 py-2 border-b border-skeleton/50 shadow-sm bg-white">
+      <div className="h-14 w-full flex items-center px-4 py-2 border-b border-skeleton/50 shadow-sm bg-white" style={{ viewTransitionName: 'app-header' }}>
         <img src={headerLogoImage} alt="DXMD Vietnam" className="h-8 object-contain" />
       </div>
     );
   }
 
   return (
-    <div className="h-12 w-full flex items-center pl-2 pr-[106px] py-2 space-x-1">
+    <div className="h-12 w-full flex items-center pl-2 pr-[106px] py-2 space-x-1 bg-white" style={{ viewTransitionName: 'app-header' }}>
       {showBack && (
         <div className="p-2 cursor-pointer" onClick={() => navigate(-1)}>
           <BackIcon />

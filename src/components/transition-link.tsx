@@ -8,5 +8,6 @@ export interface TransitionLinkProps extends NavLinkProps {}
  * @returns
  */
 export default function TransitionLink(props: TransitionLinkProps) {
-  return <NavLink {...props} unstable_viewTransition />;
+  // @ts-ignore - viewTransition is supported in newer react-router-dom versions
+  return <NavLink {...props} viewTransition />;
 }
