@@ -15,6 +15,7 @@ export interface Product {
   address?: string;
   status?: string;
   scale?: string;
+  slogan?: string;
 }
 
 export interface Category {

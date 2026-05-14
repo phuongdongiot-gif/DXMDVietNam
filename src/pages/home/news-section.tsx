@@ -34,7 +34,7 @@ export default function NewsSection() {
         {/* Full Card for the first news */}
         <TransitionLink
           to={`/news/${mainNews.id}`}
-          className="block mb-4 overflow-hidden rounded-xl bg-white shadow-sm border border-secondary/20 active:scale-[0.98] transition-transform"
+          className="block mb-4 overflow-hidden rounded-xl bg-white shadow-sm border border-gray-100 active:scale-[0.98] transition-transform"
         >
           <div className="w-full aspect-video relative bg-skeleton">
             <img
@@ -42,7 +42,7 @@ export default function NewsSection() {
               alt={mainNews.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-2 left-2 px-2 py-1 glassmorphism text-blue-600 bg-primary/80 rounded-md text-[10px] text-white font-medium uppercase tracking-wider">
+            <div className="absolute top-2 left-2 px-1 py-1 text-white bg-black/10 backdrop-blur-md rounded-md text-[10px] font-medium uppercase tracking-wider">
               {mainNews.category || "Tin tức"}
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function NewsSection() {
               <TransitionLink
                 key={news.id}
                 to={`/news/${news.id}`}
-                className="flex flex-col overflow-hidden rounded-lg bg-white shadow-sm border border-secondary/20 active:scale-[0.98] transition-transform"
+                className="flex flex-col overflow-hidden rounded-lg bg-white shadow-sm border border-gray-100 active:scale-[0.98] transition-transform"
               >
                 <div className="w-full aspect-[4/3] bg-skeleton">
                   <img

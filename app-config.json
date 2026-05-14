@@ -1,11 +1,11 @@
 {
   "appid": "1626448212471942259",
   "version": "1.0.0",
-  "description": "Cổng thông tin dự án bất động sản cao cấp từ Đất Xanh Miền Đông (DXMD Vietnam)",
+  "description": "Cổng thông tin dự án bất động sản cao cấp từ Công ty Cổ phần DXMD Việt Nam",
   "icon": "icon.png",
   "splashscreen": "splashscreen.png",
   "app": {
-    "title": "DXMD Vietnam - Bất động sản",
+    "title": "Công ty Cổ phần DXMD Việt Nam",
     "textColor": "black",
     "headerColor": "#ffffff",
     "statusBar": "normal",

@@ -17,8 +17,8 @@ export default function NewsPage() {
     try {
       api.openChat({
         type: "oa",
-        id: import.meta.env.VITE_ZALO_OA_ID || "0",
-        message: "Tôi muốn đăng ký nhận thông tin mới nhất về các dự án và bảng giá từ DXMD Vietnam.",
+        id: "4318657068771012646",
+        message: "Tôi muốn đăng ký nhận thông tin mới nhất về các dự án và bảng giá từ Công ty Cổ phần DXMD Việt Nam.",
       });
     } catch (error) {
       navigate("/contact");
@@ -50,7 +50,7 @@ export default function NewsPage() {
       className="block w-full h-[220px] rounded-2xl overflow-hidden relative shadow-md"
     >
       <img
-        src={post.imageUrl || "https://dxmdvietnam.vn/files/2026/04/du-an-fenica-di-an.jpg"}
+        src={post.imageUrl || `${import.meta.env.VITE_BASE_URL}/files/2026/04/du-an-fenica-di-an.jpg`}
         alt={post.title}
         className="w-full h-full object-cover"
       />
@@ -71,6 +71,15 @@ export default function NewsPage() {
     </TransitionLink>
   ));
 
+  const trendingSlides = trendingPosts.map((post) => (
+    <TransitionLink key={post.id} to={`/news/${post.id}`} className="block w-[160px] cursor-pointer group">
+      <div className="w-full aspect-[4/3] bg-skeleton rounded-lg overflow-hidden mb-2 relative shadow-sm border border-gray-100">
+        <img src={post.imageUrl} className="w-full h-full object-cover group-active:scale-105 transition-transform" alt="trending" />
+      </div>
+      <h4 className="text-xs font-semibold text-foreground line-clamp-2 leading-tight" dangerouslySetInnerHTML={{ __html: post.title }} />
+    </TransitionLink>
+  ));
+
   return (
     <Page className="bg-section flex flex-col hide-scrollbar">
       <Box p={4} className="bg-background pt-2 pb-0">
@@ -78,7 +87,7 @@ export default function NewsPage() {
           Tin tức & Sự kiện
         </Text>
         <Text size="small" className="text-subtitle mb-2">
-          Cập nhật thị trường mới nhất từ DXMD Vietnam
+          Cập nhật thị trường mới nhất từ Công ty Cổ phần DXMD Việt Nam
         </Text>
 
         {/* Breaking News Bar */}
@@ -125,26 +134,19 @@ export default function NewsPage() {
 
             {/* 1. Featured News Carousel */}
             {heroPosts.length > 0 && (
-              <div className="px-4">
+              <div>
                 <Carousel slides={carouselSlides} />
               </div>
             )}
 
             {/* 2. Trending Horizontal Scroll */}
             {trendingPosts.length > 0 && (
-              <div className="pt-2 px-4">
-                <h3 className="font-bold text-foreground text-sm mb-3 flex items-center">
+              <div className="pt-2">
+                <h3 className="font-bold text-foreground text-sm mb-1 flex items-center px-4">
                   <span className="text-accent mr-1"></span> Đáng chú ý
                 </h3>
-                <div className="flex overflow-x-auto space-x-3 hide-scrollbar pb-2">
-                  {trendingPosts.map((post) => (
-                    <TransitionLink key={post.id} to={`/news/${post.id}`} className="flex-none w-[160px] cursor-pointer group">
-                      <div className="w-full aspect-[4/3] bg-skeleton rounded-lg overflow-hidden mb-2 relative shadow-sm border border-secondary/20">
-                        <img src={post.imageUrl} className="w-full h-full object-cover group-active:scale-105 transition-transform" alt="trending" />
-                      </div>
-                      <h4 className="text-xs font-semibold text-foreground line-clamp-2 leading-tight" dangerouslySetInnerHTML={{ __html: post.title }} />
-                    </TransitionLink>
-                  ))}
+                <div>
+                  <Carousel slides={trendingSlides} itemsPerView="auto" />
                 </div>
               </div>
             )}
@@ -155,7 +157,7 @@ export default function NewsPage() {
             {highlightPost && (
               <div className="px-4">
                 <h3 className="font-bold text-foreground text-sm mb-3 flex items-center">
-                  <span className="text-primary mr-1">★</span> Tiêu điểm thị trường
+                  <span className="text-primary mr-1"></span> Tiêu điểm thị trường
                 </h3>
                 <TransitionLink to={`/news/${highlightPost.id}`} className="block group active:scale-[0.98] transition-transform">
                   <div className="w-full aspect-video rounded-xl overflow-hidden bg-skeleton mb-3 shadow-sm border border-secondary/20">
@@ -242,13 +244,13 @@ export default function NewsPage() {
               <div className="mx-4 mt-6 mb-2 bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-5 text-white shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
                 <h3 className="font-bold text-lg mb-2 relative z-10">Đừng bỏ lỡ cơ hội đầu tư</h3>
-                <p className="text-xs text-white/90 mb-4 relative z-10">Đăng ký để nhận thông tin mới nhất về các dự án và bảng giá từ DXMD Vietnam.</p>
-                <button 
+                <p className="text-xs text-white/90 mb-4 relative z-10">Đăng ký để nhận thông tin mới nhất về các dự án và bảng giá từ Công ty Cổ phần DXMD Việt Nam.</p>
+                <button
                   onClick={handleChat}
-                  className="w-full flex items-center justify-center space-x-2 bg-white/20 p-3 rounded-xl relative z-10 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-colors cursor-pointer active:scale-95"
+                  className="w-full flex items-center justify-center space-x-2 bg-accent p-3 rounded-lg relative z-10 shadow-sm hover:bg-accent/90 transition-colors cursor-pointer active:scale-95"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                    <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="currentColor"/>
+                    <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="currentColor" />
                   </svg>
                   <span className="text-white font-bold text-sm">Nhắn tin nhận thông tin</span>
                 </button>

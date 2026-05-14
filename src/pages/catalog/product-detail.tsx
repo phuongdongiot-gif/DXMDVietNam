@@ -30,19 +30,19 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     if (product) {
-      document.title = `${product.name} - DXMD Vietnam`;
+      document.title = `${product.name} - Công ty Cổ phần DXMD Việt Nam`;
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', `Thông tin chi tiết dự án ${product.name} phân phối bởi DXMD Vietnam.`);
+        metaDescription.setAttribute('content', `Thông tin chi tiết dự án ${product.name} phân phối bởi Công ty Cổ phần DXMD Việt Nam.`);
       }
     }
   }, [product]);
 
   const handleCall = () => {
     try {
-      api.openPhone({ phoneNumber: "19001234" });
+      api.openPhone({ phoneNumber: "0965355355" });
     } catch (error) {
-      toast.success("Đang gọi Hotline: 19001234");
+      toast.success("Đang gọi Hotline: 0965355355");
     }
   };
 
@@ -50,7 +50,7 @@ export default function ProductDetailPage() {
     try {
       api.openChat({
         type: "oa",
-        id: import.meta.env.VITE_ZALO_OA_ID || "0",
+        id: "4318657068771012646",
         message: `Tôi muốn tư vấn về dự án ${product?.name || ""}`,
       });
     } catch (error) {
@@ -109,16 +109,36 @@ export default function ProductDetailPage() {
             <h1 className="text-xl md:text-2xl font-bold text-white leading-tight drop-shadow-md">
               {product.name}
             </h1>
+            {product.slogan && (
+              <p className="text-sm text-gray-200 mt-1 italic drop-shadow-sm font-medium">
+                {product.slogan}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Quick Stats Grid */}
         <div className="px-4 py-4 grid grid-cols-2 gap-3 bg-white border-b border-gray-100">
-          <div className="flex flex-col bg-gray-50/80 p-3 rounded-xl border border-gray-100">
-            <span className="text-[11px] text-gray-500 mb-1 flex items-center font-medium">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mr-1 text-primary"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" /></svg>
-              Vị trí
-            </span>
+          <div 
+            className="flex flex-col bg-gray-50/80 p-3 rounded-xl border border-gray-100 cursor-pointer active:scale-95 transition-transform relative group"
+            onClick={() => {
+              if (product.lat && product.lng) {
+                navigate('/map', { state: { selectedProjectId: product.id } });
+              } else {
+                toast("Dự án này chưa có tọa độ trên bản đồ");
+              }
+            }}
+          >
+            <div className="flex items-start justify-between mb-1">
+              <span className="text-[11px] text-gray-500 flex items-center font-medium">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mr-1 text-primary"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" /></svg>
+                Vị trí
+              </span>
+              <span className="text-[9px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded shadow-sm flex items-center">
+                Xem bản đồ
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" className="ml-0.5"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </span>
+            </div>
             <span className="text-sm font-semibold text-foreground line-clamp-1">{product.address || "Đang cập nhật"}</span>
           </div>
           <div className="flex flex-col bg-gray-50/80 p-3 rounded-xl border border-gray-100">
@@ -133,7 +153,7 @@ export default function ProductDetailPage() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mr-1 text-primary"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" fill="currentColor" /></svg>
               Nhà phát triển
             </span>
-            <span className="text-sm font-semibold text-foreground line-clamp-1">{product.developer || "DXMD Vietnam"}</span>
+            <span className="text-sm font-semibold text-foreground line-clamp-1">{product.developer || "Công ty Cổ phần DXMD Việt Nam"}</span>
           </div>
           <div className="flex flex-col bg-gray-50/80 p-3 rounded-xl border border-gray-100">
             <span className="text-[11px] text-gray-500 mb-1 flex items-center font-medium">
@@ -183,12 +203,14 @@ export default function ProductDetailPage() {
             <div
               className="
                   prose prose-sm max-w-none text-foreground/80 leading-relaxed
+                  [&_.wp-caption]:!max-w-full [&_.wp-caption]:!w-full
                   [&_img]:!max-w-full [&_img]:!w-auto [&_img]:!h-auto [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:mx-auto [&_img]:my-4 [&_img]:object-contain
                   [&_figure]:!max-w-full [&_figure]:!w-auto [&_figure]:!m-0 [&_figure]:!mx-auto
                   [&_iframe]:!max-w-full [&_iframe]:!w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl
                   [&_table]:!max-w-full [&_table]:block [&_table]:overflow-x-auto
+                  [&_a]:pointer-events-none
                 "
-              dangerouslySetInnerHTML={{ __html: activeContent }}
+              dangerouslySetInnerHTML={{ __html: activeContent.replace(/data-src=/g, 'src=').replace(/data-lazy-src=/g, 'src=') }}
             />
           )}
 

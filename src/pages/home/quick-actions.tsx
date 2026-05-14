@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Text } from "zmp-ui";
+
 
 const QuickActions: React.FC = () => {
   const navigate = useNavigate();
@@ -45,23 +45,33 @@ const QuickActions: React.FC = () => {
         </svg>
       ),
       path: "/news"
+    },
+    {
+      id: "contact",
+      label: "Liên hệ",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-primary">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" fill="currentColor"/>
+        </svg>
+      ),
+      path: "/contact"
     }
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-2 py-3 bg-transparent relative z-10">
+    <div className="grid grid-cols-5 gap-2 py-4 px-2 bg-transparent relative z-10">
       {actions.map((action) => (
         <div 
           key={action.id} 
-          className="flex flex-col items-center justify-center cursor-pointer active:scale-95 transition-transform"
+          className="flex flex-col items-center justify-start cursor-pointer active:scale-95 transition-transform group"
           onClick={() => navigate(action.path)}
         >
-          <div className="w-12 h-12 bg-primary/5 rounded-[20px] flex items-center justify-center mb-2 shadow-[0_8px_16px_rgba(28,90,150,0.08)] border border-primary/10 hover:bg-primary/10 hover:-translate-y-1 transition-all duration-300">
+          <div className="w-[48px] h-[48px] bg-gradient-to-br from-primary/10 via-primary/5 to-white rounded-[14px] flex items-center justify-center mb-2 shadow-sm border border-primary/20 group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
             {action.icon}
           </div>
-          <Text size="xSmall" className="font-semibold text-gray-700 text-center">
+          <span className="text-[11px] font-bold text-gray-800 text-center leading-tight">
             {action.label}
-          </Text>
+          </span>
         </div>
       ))}
     </div>

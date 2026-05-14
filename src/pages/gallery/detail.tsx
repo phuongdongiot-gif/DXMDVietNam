@@ -16,7 +16,7 @@ export default function GalleryDetailPage() {
 
   useEffect(() => {
     if (gallery) {
-      document.title = `${gallery.title} - DXMD Vietnam`;
+      document.title = `${gallery.title} - Công ty Cổ phần DXMD Việt Nam`;
     }
   }, [gallery]);
 

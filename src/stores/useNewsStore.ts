@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { fetchNewsAPI } from '@/services/wp';
 
 export interface NewsPost {
   id: number;
@@ -25,8 +26,7 @@ export const useNewsStore = create<NewsStore>((set, get) => ({
     if (get().posts.length > 0 || get().isLoading) return;
     set({ isLoading: true });
     try {
-      const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/posts?_embed&per_page=20');
-      const data = await res.json();
+      const data = await fetchNewsAPI();
       const mappedPosts = data.map((p: any) => {
         let categoryName = "Tin tức";
         if (p._embedded && p._embedded['wp:term'] && p._embedded['wp:term'][0] && p._embedded['wp:term'][0][0]) {

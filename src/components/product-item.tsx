@@ -15,7 +15,7 @@ export default function ProductItem(props: ProductItemProps) {
 
   return (
     <TransitionLink
-      className="flex flex-col cursor-pointer group active:scale-[0.98] transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1 rounded-xl overflow-hidden bg-white animate-fade-in-up border border-secondary/20"
+      className="flex flex-col cursor-pointer group active:scale-[0.98] transition-all duration-300 ease-out shadow-sm hover:shadow-md hover:-translate-y-1 rounded-xl overflow-hidden bg-white animate-fade-in-up border border-gray-100"
       to={`/product/${props.product.id}`}
       replace={props.replace}
       onClick={() => setSelected(true)}
@@ -35,7 +35,7 @@ export default function ProductItem(props: ProductItemProps) {
               alt={props.product.name}
             />
             {/* Category Badge with Glassmorphism */}
-            <div className="absolute top-2 left-2 px-2 py-1 glassmorphism bg-black/30 rounded-md text-[10px] text-blue-600 font-medium uppercase tracking-wider shadow-sm">
+            <div className="absolute top-2 left-2 px-2 py-1 backdrop-blur-sm rounded-md text-[10px] text-white font-medium uppercase tracking-wider shadow-sm">
               {props.product.category?.name || "Dự án"}
             </div>
 
@@ -47,7 +47,7 @@ export default function ProductItem(props: ProductItemProps) {
                 {props.product.name}
               </h3>
               <div className="mt-1.5 flex items-center">
-                <div className="text-[10px] text-white bg-accent/90 px-2 py-0.5 rounded-sm font-medium shadow-sm transition-colors group-hover:bg-accent">
+                <div className="text-[10px] text-white bg-accent/90 px-1 py-0.5 rounded-sm font-medium shadow-sm transition-colors group-hover:bg-accent">
                   Khám phá ngay
                 </div>
               </div>

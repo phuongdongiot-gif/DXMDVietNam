@@ -15,7 +15,7 @@ export default function ProfileActions() {
         {
           label: "Tài liệu",
           icon: "zi-note",
-          onClick: () => navigate(`/webview?url=${encodeURIComponent("https://dxmdvietnam.vn/thu-vien/tai-lieu/")}`),
+          onClick: () => navigate(`/webview?url=${encodeURIComponent(`${import.meta.env.VITE_BASE_URL}/thu-vien/tai-lieu/`)}`),
         },
         {
           label: "Tin tức",
@@ -25,7 +25,7 @@ export default function ProfileActions() {
         {
           label: "Tuyển dụng",
           icon: "zi-user-solid",
-          onClick: () => navigate(`/webview?url=${encodeURIComponent("https://dxmdvietnam.vn/tuyen-dung/")}`),
+          onClick: () => navigate(`/webview?url=${encodeURIComponent(`${import.meta.env.VITE_BASE_URL}/tuyen-dung/`)}`),
         },
       ].map((action) => (
         <div

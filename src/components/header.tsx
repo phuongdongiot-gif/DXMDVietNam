@@ -6,7 +6,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { categoriesStateUpwrapped } from "@/state";
-import headerLogoImage from "@/static/header-logo.svg";
+import headerLogoImage from "@/static/header-logo.png";
 import { BackIcon } from "./vectors";
 import { useMemo } from "react";
 import { useRouteHandle } from "@/hooks";
@@ -31,8 +31,8 @@ export default function Header() {
 
   if (handle?.logo) {
     return (
-      <div className="h-14 w-full flex items-center px-4 py-2 border-b border-skeleton/50 shadow-sm">
-        <span className="text-2xl font-bold text-primary tracking-tighter">DXMD<span className="text-secondary ml-1 font-medium">Vietnam</span></span>
+      <div className="h-14 w-full flex items-center px-4 py-2 border-b border-skeleton/50 shadow-sm bg-white">
+        <img src={headerLogoImage} alt="DXMD Vietnam" className="h-8 object-contain" />
       </div>
     );
   }

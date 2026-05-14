@@ -3,6 +3,7 @@ import { atomFamily, unwrap } from "jotai/utils";
 import { Cart, Category, Color, Product } from "types";
 import { requestWithFallback } from "@/utils/request";
 import api from "zmp-sdk";
+import { fetchBannersAPI, fetchRawProductsAPI, fetchGalleryAPI } from "@/services/wp";
 
 export const userState = atom(() =>
   api.getUserInfo({
@@ -12,10 +13,9 @@ export const userState = atom(() =>
 
 export const bannersState = atom(async () => {
   try {
-    const res = await fetch("https://dxmdvietnam.vn/wp-json/wp/v2/pages?slug=trang-chu");
-    const data = await res.json();
-    if (data && data.length > 0 && data[0].acf && data[0].acf.du_an_nb) {
-      return data[0].acf.du_an_nb.map((item: any) => item.img).filter(Boolean);
+    const banners = await fetchBannersAPI();
+    if (banners) {
+      return banners;
     }
   } catch (error) {
     console.error("Error fetching banners", error);
@@ -36,8 +36,7 @@ export const selectedTabIndexState = atom(0);
 export const rawProductsState = atom(async () => {
   try {
     // Filter by taxonomy tags 5 and 6
-    const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/du-an?danh-muc-du-an=5,6&_embed&per_page=100');
-    return await res.json();
+    return await fetchRawProductsAPI();
   } catch (error) {
     console.error("Error fetching projects from WP API", error);
     return [];
@@ -139,20 +138,67 @@ export const productsState = atom(async (get) => {
 
     const imageUrl = p._embedded && p._embedded['wp:featuredmedia'] ? p._embedded['wp:featuredmedia'][0].source_url : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
 
+    let address = acf.dia_chi;
+    let price = acf.gia_ban ? parseInt(acf.gia_ban) : 0;
+    let developer = acf.chu_dau_tu;
+    let scale = acf.quy_mo;
+    const status = acf.tinh_trang || "Đang mở bán";
+
+    // Try to extract from tq_content if fields are missing
+    if (acf.tq_content) {
+      const getTableValue = (label: string) => {
+        const regex = new RegExp(`>\\s*${label}\\s*<\\/t[dh]>\\s*<t[dh][^>]*>(.*?)<\\/t[dh]>`, 'i');
+        const match = acf.tq_content.match(regex);
+        if (match) return match[1].replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+        
+        // Also try strong tag mapping like <strong>Vị trí:</strong> text
+        const strongRegex = new RegExp(`>\\s*${label}\\s*:?\\s*<\\/strong>\\s*(?:<[^>]+>)*([^<]+)`, 'i');
+        const matchStrong = acf.tq_content.match(strongRegex);
+        return matchStrong ? matchStrong[1].replace(/&nbsp;/g, ' ').trim() : null;
+      };
+
+      if (!address || address === "Đang cập nhật") {
+        address = getTableValue('Vị trí') || getTableValue('Vị trí dự án') || address;
+      }
+      if (!developer || developer === "Công ty Cổ phần DXMD Việt Nam") {
+        developer = getTableValue('Chủ đầu tư') || getTableValue('Nhà phát triển') || developer;
+      }
+      if (!scale || scale === "Đang cập nhật") {
+        scale = getTableValue('Quy mô') || getTableValue('Tổng diện tích') || scale;
+      }
+
+      // Fallback to plainText regex if still missing
+      const plainText = acf.tq_content.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ');
+      
+      if (!address || address === "Đang cập nhật") {
+        const m = plainText.match(/Vị trí\s*(?:dự án)?\s*[:\-]\s*([^<\n\r\.]+)/i);
+        if (m) address = m[1].trim().split('Quy mô')[0].split('Chủ đầu tư')[0].split('Loại hình')[0].substring(0, 50) + (m[1].length > 50 ? '...' : '');
+      }
+      if (!developer || developer === "Công ty Cổ phần DXMD Việt Nam") {
+        const m = plainText.match(/Chủ đầu tư\s*[:\-]\s*([^\n\r\.]+)/i);
+        if (m) developer = m[1].trim().split('Quy mô')[0].split('Vị trí')[0].substring(0, 50) + (m[1].length > 50 ? '...' : '');
+      }
+      if (!scale || scale === "Đang cập nhật") {
+        const m = plainText.match(/(?:Quy mô|Tổng diện tích)\s*[:\-]\s*([^\n\r\.]+)/i);
+        if (m) scale = m[1].trim().split('Chủ đầu tư')[0].split('Vị trí')[0].substring(0, 50) + (m[1].length > 50 ? '...' : '');
+      }
+    }
+
     return {
       id: String(p.id),
       name: p.title.rendered.replace(/&#038;/g, '&'),
-      price: acf.gia_ban ? parseInt(acf.gia_ban) : 0, 
+      slogan: acf.gt_slogan || "",
+      price: price, 
       image: imageUrl,
       categoryId: [categoryId],
       category: category,
       details: details,
       lat,
       lng,
-      developer: acf.chu_dau_tu || "DXMD Vietnam",
-      address: acf.dia_chi || "Đang cập nhật",
-      status: acf.tinh_trang || "Đang mở bán",
-      scale: acf.quy_mo || "Đang cập nhật"
+      developer: developer || "Công ty Cổ phần DXMD Việt Nam",
+      address: address || "Đang cập nhật",
+      status: status,
+      scale: scale || "Đang cập nhật"
     };
   });
 });
@@ -196,8 +242,7 @@ export interface GalleryItem {
 
 export const galleryState = atom(async () => {
   try {
-    const res = await fetch('https://dxmdvietnam.vn/wp-json/wp/v2/thu-vien?_embed&per_page=10');
-    const data = await res.json();
+    const data = await fetchGalleryAPI();
     
     return data.map((p: any) => {
       const acf = p.acf || {};

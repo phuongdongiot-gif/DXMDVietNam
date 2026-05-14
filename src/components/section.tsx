@@ -10,7 +10,7 @@ export interface SectionProps {
 
 export default function Section(props: PropsWithChildren<SectionProps>) {
   return (
-    <div className="bg-white rounded-[24px] pt-4 pb-4 mb-4 shadow-[0_2px_12px_rgba(0,0,0,0.03)] border border-gray-100 overflow-hidden">
+    <div className="bg-white rounded-lg py-4 mb-4 border border-gray-100 overflow-hidden">
       <div className="flex items-center justify-between px-4 mb-2">
         <div className="text-lg font-bold text-gray-900 truncate flex items-center">
           <div className="w-1.5 h-5 bg-primary rounded-full mr-2"></div>

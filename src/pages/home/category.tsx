@@ -16,7 +16,7 @@ export default function Category() {
               className="flex flex-col items-center justify-center cursor-pointer group active:scale-95 transition-transform duration-200"
               to={`/category/${category.id}`}
             >
-              <div className="w-[88px] h-[88px] rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] border-2 border-white bg-skeleton relative mb-2">
+              <div className="w-[88px] h-[88px] rounded-xl overflow-hidden shadow-sm border-2 border-white bg-skeleton relative mb-2">
                 <img
                   src={category.image}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

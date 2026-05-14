@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Page, Box, Text, Icon } from "zmp-ui";
+import { Page, Icon } from "zmp-ui";
+import { fetchAboutPageAPI } from "@/services/wp";
 
 interface HistoryItem {
   month: string;
@@ -31,8 +32,7 @@ export default function AboutPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://dxmdvietnam.vn/wp-json/wp/v2/pages?slug=gioi-thieu")
-      .then(res => res.json())
+    fetchAboutPageAPI()
       .then(resData => {
         if (resData && resData.length > 0) {
           const page = resData[0];
@@ -68,59 +68,60 @@ export default function AboutPage() {
             <div className="w-full aspect-[21/9] bg-skeleton relative">
               <img src={data.banner} className="w-full h-full object-cover" alt="DXMD Banner" />
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <Text size="xxLarge" bold className="text-white text-center drop-shadow-md px-4">
+                <div className="text-2xl font-bold text-white text-center drop-shadow-md px-4">
                   Về chúng tôi
-                </Text>
+                </div>
               </div>
             </div>
           )}
 
           {/* Intro Content */}
-          <Box p={4} className="bg-white shadow-sm mb-2 border-b border-gray-100">
+          <div className="p-4 bg-white shadow-sm mb-2 border-b border-gray-100">
             <div 
               className="
                 text-gray-700 text-[14.5px] leading-relaxed 
-                [&_p]:mb-3 [&_strong]:text-primary [&_a]:text-secondary
+                [&_.wp-caption]:!max-w-full [&_.wp-caption]:!w-full
+                [&_p]:mb-3 [&_strong]:text-primary [&_a]:text-secondary [&_a]:pointer-events-none
                 [&_img]:!max-w-full [&_img]:!w-auto [&_img]:!h-auto [&_img]:rounded-lg [&_img]:object-contain
                 [&_figure]:!max-w-full [&_figure]:!w-auto [&_figure]:!m-0 [&_figure]:!mx-auto
                 [&_iframe]:!max-w-full [&_iframe]:!w-full [&_iframe]:aspect-video
               "
-              dangerouslySetInnerHTML={{ __html: data.content }}
+              dangerouslySetInnerHTML={{ __html: data.content.replace(/data-src=/g, 'src=').replace(/data-lazy-src=/g, 'src=') }}
             />
             {data.author && (
               <div className="mt-4 pt-4 border-t border-gray-100 flex justify-end">
-                <Text size="small" bold className="text-gray-800 italic">
+                <div className="text-sm font-bold text-gray-800 italic">
                   {data.author}
-                </Text>
+                </div>
               </div>
             )}
-          </Box>
+          </div>
 
           {/* Business Philosophy */}
           {(data.businessTitle || data.businessImg) && (
-            <Box p={4} className="bg-white shadow-sm mb-2 border-y border-gray-100">
-              <Text size="xLarge" bold className="text-primary mb-2 text-center">
+            <div className="p-4 bg-white shadow-sm mb-2 border-y border-gray-100">
+              <h2 className="text-xl font-bold text-primary mb-2 text-center">
                 {data.businessTitle || "Triết lý kinh doanh"}
-              </Text>
+              </h2>
               {data.businessSubTitle && (
-                <Text size="small" className="text-gray-600 text-center mb-4 italic">
+                <div className="text-sm text-gray-600 text-center mb-4 italic">
                   "{data.businessSubTitle}"
-                </Text>
+                </div>
               )}
               {data.businessImg && (
                 <div className="w-full rounded-xl overflow-hidden shadow-sm">
                   <img src={data.businessImg} alt={data.businessTitle} className="w-full object-contain" />
                 </div>
               )}
-            </Box>
+            </div>
           )}
 
           {/* Core Values */}
           {data.coreValues && data.coreValues.length > 0 && (
-            <Box p={4} className="bg-white shadow-sm mb-2 border-y border-gray-100">
-              <Text size="xLarge" bold className="text-primary mb-4 text-center">
+            <div className="p-4 bg-white shadow-sm mb-2 border-y border-gray-100">
+              <h2 className="text-xl font-bold text-primary mb-4 text-center">
                 {data.coreValuesTitle || "Tầm nhìn - Sứ mệnh - Giá trị cốt lõi"}
-              </Text>
+              </h2>
               <div className="space-y-4">
                 {data.coreValues.map((item, index) => (
                   <div key={index} className="flex items-start bg-primary/5 p-4 rounded-xl border border-primary/10">
@@ -134,44 +135,44 @@ export default function AboutPage() {
                       </div>
                     )}
                     <div>
-                      <Text size="large" bold className="text-foreground mb-1">
+                      <div className="text-lg font-bold text-foreground mb-1">
                         {item.title}
-                      </Text>
-                      <Text size="small" className="text-gray-600 leading-relaxed">
+                      </div>
+                      <div className="text-sm text-gray-600 leading-relaxed">
                         {item.sub}
-                      </Text>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
-            </Box>
+            </div>
           )}
 
           {/* History */}
           {data.history && data.history.length > 0 && (
-            <Box p={4} className="bg-white shadow-sm mb-4 border-y border-gray-100">
-              <Text size="xLarge" bold className="text-primary mb-6 text-center">
+            <div className="p-4 bg-white shadow-sm mb-4 border-y border-gray-100">
+              <h2 className="text-xl font-bold text-primary mb-6 text-center">
                 {data.historyTitle || "Lịch sử hình thành"}
-              </Text>
+              </h2>
               <div className="relative pl-6 border-l-2 border-primary/20 ml-2 space-y-6">
                 {data.history.map((item, index) => (
                   <div key={index} className="relative">
                     <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm"></div>
-                    <Text size="small" bold className="text-secondary mb-1">
+                    <div className="text-sm font-bold text-secondary mb-1">
                       Tháng {item.month}/{item.year}
-                    </Text>
-                    <Text size="small" className="text-gray-700 leading-relaxed">
+                    </div>
+                    <div className="text-sm text-gray-700 leading-relaxed">
                       {item.content}
-                    </Text>
+                    </div>
                   </div>
                 ))}
               </div>
-            </Box>
+            </div>
           )}
         </>
       ) : (
         <div className="flex-1 flex flex-col items-center justify-center p-4">
-          <Text className="text-gray-500 mb-4">Không tìm thấy thông tin giới thiệu.</Text>
+          <div className="text-gray-500 mb-4">Không tìm thấy thông tin giới thiệu.</div>
         </div>
       )}
     </Page>
