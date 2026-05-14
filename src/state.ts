@@ -171,18 +171,23 @@ export const productsState = atom(async (get) => {
       const plainText = acf.tq_content.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ');
       
       if (!address || address === "Đang cập nhật") {
-        const m = plainText.match(/Vị trí\s*(?:dự án)?\s*[:\-]\s*([^<\n\r\.]+)/i);
+        const m = plainText.match(/Vị trí\s*(?:dự án)?\s*[:\-]\s*([^\n\r]+)/i);
         if (m) address = m[1].trim().split('Quy mô')[0].split('Chủ đầu tư')[0].split('Loại hình')[0].substring(0, 50) + (m[1].length > 50 ? '...' : '');
       }
       if (!developer || developer === "Công ty Cổ phần DXMD Việt Nam") {
-        const m = plainText.match(/Chủ đầu tư\s*[:\-]\s*([^\n\r\.]+)/i);
+        const m = plainText.match(/Chủ đầu tư\s*[:\-]\s*([^\n\r]+)/i);
         if (m) developer = m[1].trim().split('Quy mô')[0].split('Vị trí')[0].substring(0, 50) + (m[1].length > 50 ? '...' : '');
       }
       if (!scale || scale === "Đang cập nhật") {
-        const m = plainText.match(/(?:Quy mô|Tổng diện tích)\s*[:\-]\s*([^\n\r\.]+)/i);
-        if (m) scale = m[1].trim().split('Chủ đầu tư')[0].split('Vị trí')[0].substring(0, 50) + (m[1].length > 50 ? '...' : '');
+        const m = plainText.match(/(?:Quy mô|Tổng diện tích)\s*[:\-]\s*([^\n\r]+)/i);
+        if (m) scale = m[1].trim().split('Chủ đầu tư')[0].split('Vị trí')[0].substring(0, 60) + (m[1].length > 60 ? '...' : '');
       }
     }
+
+    // Clean up HTML tags if any sneaked in
+    if (scale && typeof scale === 'string') scale = scale.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+    if (address && typeof address === 'string') address = address.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+    if (developer && typeof developer === 'string') developer = developer.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
 
     return {
       id: String(p.id),

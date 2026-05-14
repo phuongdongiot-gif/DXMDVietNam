@@ -17,8 +17,8 @@ export default function NewsPage() {
     try {
       api.openChat({
         type: "oa",
-        id: "4318657068771012646",
-        message: "Tôi muốn đăng ký nhận thông tin mới nhất về các dự án và bảng giá từ Công ty Cổ phần DXMD Việt Nam.",
+        id: "656653957756576520",
+        message: "Tôi muốn nhận thông tin mới nhất về các dự án và bảng giá từ DXMD Việt Nam.",
       });
     } catch (error) {
       navigate("/contact");
@@ -53,6 +53,7 @@ export default function NewsPage() {
         src={post.imageUrl || `${import.meta.env.VITE_BASE_URL}/files/2026/04/du-an-fenica-di-an.jpg`}
         alt={post.title}
         className="w-full h-full object-cover"
+        style={{ viewTransitionName: `news-image-${post.id}` }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
       <div className="absolute top-3 left-3 bg-primary/90 text-white text-[10px] uppercase font-bold px-2 py-1 rounded backdrop-blur-sm">
@@ -74,7 +75,7 @@ export default function NewsPage() {
   const trendingSlides = trendingPosts.map((post) => (
     <TransitionLink key={post.id} to={`/news/${post.id}`} className="block w-[160px] cursor-pointer group">
       <div className="w-full aspect-[4/3] bg-skeleton rounded-lg overflow-hidden mb-2 relative shadow-sm border border-gray-100">
-        <img src={post.imageUrl} className="w-full h-full object-cover group-active:scale-105 transition-transform" alt="trending" />
+        <img src={post.imageUrl} className="w-full h-full object-cover group-active:scale-105 transition-transform" alt="trending" style={{ viewTransitionName: `news-image-${post.id}` }} />
       </div>
       <h4 className="text-xs font-semibold text-foreground line-clamp-2 leading-tight" dangerouslySetInnerHTML={{ __html: post.title }} />
     </TransitionLink>
@@ -92,12 +93,12 @@ export default function NewsPage() {
 
         {/* Breaking News Bar */}
         {posts.length > 0 && (
-          <div className="flex items-center bg-accent/10 border border-accent/20 rounded-lg p-2 mb-2 animate-fade-in">
+          <TransitionLink to={`/news/${posts[0].id}`} className="flex items-center bg-accent/10 border border-accent/20 rounded-lg p-2 mb-2 animate-fade-in active:scale-95 transition-transform cursor-pointer block">
             <div className="bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded mr-2 flex-none animate-pulse">
               MỚI NHẤT
             </div>
             <div className="text-xs text-foreground font-medium truncate flex-1" dangerouslySetInnerHTML={{ __html: posts[0].title }} />
-          </div>
+          </TransitionLink>
         )}
       </Box>
 
@@ -161,7 +162,7 @@ export default function NewsPage() {
                 </h3>
                 <TransitionLink to={`/news/${highlightPost.id}`} className="block group active:scale-[0.98] transition-transform">
                   <div className="w-full aspect-video rounded-xl overflow-hidden bg-skeleton mb-3 shadow-sm border border-secondary/20">
-                    <img src={highlightPost.imageUrl} className="w-full h-full object-cover" alt="highlight" />
+                    <img src={highlightPost.imageUrl} className="w-full h-full object-cover" alt="highlight" style={{ viewTransitionName: `news-image-${highlightPost.id}` }} />
                   </div>
                   <div className="text-[10px] text-primary font-medium mb-1 uppercase tracking-wider">
                     {highlightPost.category || "Tin tức"}
@@ -191,7 +192,7 @@ export default function NewsPage() {
                         <div className="text-[10px] text-subtitle">{post.date}</div>
                       </div>
                       <div className="w-16 h-16 rounded overflow-hidden flex-none ml-2 bg-skeleton">
-                        <img src={post.imageUrl} className="w-full h-full object-cover" alt="" />
+                        <img src={post.imageUrl} className="w-full h-full object-cover" alt="" style={{ viewTransitionName: `news-image-${post.id}` }} />
                       </div>
                     </TransitionLink>
                   ))}
@@ -209,7 +210,7 @@ export default function NewsPage() {
                   {gridPosts.map(post => (
                     <TransitionLink key={post.id} to={`/news/${post.id}`} className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm border border-secondary/20 active:scale-[0.98] transition-transform">
                       <div className="w-full aspect-[4/3] bg-skeleton">
-                        <img src={post.imageUrl} className="w-full h-full object-cover" alt="" />
+                        <img src={post.imageUrl} className="w-full h-full object-cover" alt="" style={{ viewTransitionName: `news-image-${post.id}` }} />
                       </div>
                       <div className="p-2 flex flex-col justify-between flex-1">
                         <h4 className="text-xs font-semibold text-foreground line-clamp-3 leading-snug mb-1" dangerouslySetInnerHTML={{ __html: post.title }} />
@@ -227,7 +228,7 @@ export default function NewsPage() {
                 {remainingPosts.map((post) => (
                   <TransitionLink key={post.id} to={`/news/${post.id}`} className="flex items-center bg-white rounded-xl overflow-hidden shadow-sm border border-secondary/20 active:scale-[0.98] transition-transform p-2">
                     <div className="w-[90px] h-[70px] rounded-lg overflow-hidden flex-none bg-skeleton">
-                      <img src={post.imageUrl} alt="" className="w-full h-full object-cover" />
+                      <img src={post.imageUrl} alt="" className="w-full h-full object-cover" style={{ viewTransitionName: `news-image-${post.id}` }} />
                     </div>
                     <div className="ml-3 flex-1">
                       <div className="text-[9px] text-primary font-medium mb-0.5 uppercase tracking-wider">{post.category}</div>

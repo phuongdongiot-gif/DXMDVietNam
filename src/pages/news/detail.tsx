@@ -22,7 +22,13 @@ export default function NewsDetailPage() {
         metaDescription.setAttribute('content', post.excerpt || `Bài viết: ${rawTitle}`);
       }
     }
-  }, [post]);
+    
+    // Scroll to top when changing posts
+    const page = document.getElementById('news-detail-page');
+    if (page) {
+      page.scrollTop = 0;
+    }
+  }, [post, id]);
 
   if (!post) {
     return (
@@ -37,7 +43,7 @@ export default function NewsDetailPage() {
     try {
       api.openChat({
         type: "oa",
-        id: "4318657068771012646",
+        id: "656653957756576520",
         message: `Tôi muốn nhận thông tin tư vấn và bảng giá.`
       });
     } catch (error) {
@@ -68,22 +74,29 @@ export default function NewsDetailPage() {
   const relatedPosts = allPosts.filter(p => p.id !== Number(id)).slice(0, 5);
 
   const relatedSlides = relatedPosts.map((p) => (
-    <TransitionLink key={p.id} to={`/news/${p.id}`} className="block w-[160px] cursor-pointer group" replace>
+    <TransitionLink key={p.id} to={`/news/${p.id}`} className="block w-[160px] cursor-pointer group">
       <div className="w-full aspect-[4/3] bg-skeleton rounded-lg overflow-hidden mb-2 relative shadow-sm border border-gray-100">
-        <img src={p.imageUrl || `${import.meta.env.VITE_BASE_URL}/files/2026/04/du-an-fenica-di-an.jpg`} className="w-full h-full object-cover group-active:scale-105 transition-transform" alt={p.title.replace(/<[^>]+>/g, '')} />
+        <img 
+          src={p.imageUrl || `${import.meta.env.VITE_BASE_URL}/files/2026/04/du-an-fenica-di-an.jpg`} 
+          className="w-full h-full object-cover group-active:scale-105 transition-transform" 
+          alt={p.title.replace(/<[^>]+>/g, '')} 
+          style={{ viewTransitionName: `news-image-${p.id}` }}
+        />
       </div>
       <h4 className="text-xs font-semibold text-foreground line-clamp-2 leading-tight" dangerouslySetInnerHTML={{ __html: p.title }} />
     </TransitionLink>
   ));
 
   return (
-    <Page className="bg-white flex flex-col overflow-y-auto">
+    <Page className="bg-white flex flex-col overflow-y-auto" id="news-detail-page">
       {/* 1. Cover Image */}
       <div className="w-full aspect-video relative bg-skeleton">
         <img
+          key={post.id}
           src={post.imageUrl || `${import.meta.env.VITE_BASE_URL}/files/2026/04/du-an-fenica-di-an.jpg`}
           alt={cleanTitle}
           className="w-full h-full object-cover"
+          style={{ viewTransitionName: `news-image-${post.id}` }}
         />
       </div>
 

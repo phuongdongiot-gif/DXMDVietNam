@@ -50,7 +50,7 @@ export default function ProductDetailPage() {
     try {
       api.openChat({
         type: "oa",
-        id: "4318657068771012646",
+        id: "656653957756576520",
         message: `Tôi muốn tư vấn về dự án ${product?.name || ""}`,
       });
     } catch (error) {
@@ -237,24 +237,21 @@ export default function ProductDetailPage() {
       </div>
 
       {/* Floating Action Bar */}
-      <div className="flex-none grid grid-cols-2 gap-3 p-3 glassmorphism sticky bottom-0 z-50 border-t border-gray-100 shadow-[0_-10px_20px_rgba(0,0,0,0.03)] pb-[max(12px,env(safe-area-inset-bottom))]">
-        <Button
-          large
-          variant="secondary"
-          className="border-primary/20 text-primary bg-primary/5 flex items-center justify-center space-x-2 font-bold shadow-none active:bg-primary/10"
+      <div className="flex-none grid grid-cols-2 gap-3 p-3 bg-white sticky bottom-0 z-50 border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] pb-[max(12px,env(safe-area-inset-bottom))]">
+        <button
+          className="flex items-center justify-center space-x-2 font-bold py-3.5 rounded-xl bg-[#25D366] text-white shadow-md shadow-[#25D366]/30 active:scale-95 transition-transform"
           onClick={handleCall}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z" fill="currentColor" /></svg>
-          <span>Gọi Ngay</span>
-        </Button>
-        <Button
-          large
-          className="bg-primary text-white flex items-center justify-center space-x-2 font-bold shadow-md shadow-primary/30"
+          <span>Gọi ngay</span>
+        </button>
+        <button
+          className="flex items-center justify-center space-x-2 font-bold py-3.5 rounded-xl bg-[#0068ff] text-white shadow-md shadow-[#0068ff]/30 active:scale-95 transition-transform"
           onClick={handleChat}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="currentColor" /></svg>
-          <span>Zalo Chat</span>
-        </Button>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 13.68 2.42 15.26 3.16 16.65L2 21L6.5 19.92C7.8 20.61 9.35 21 11.02 21C16.54 21 21 16.54 21 11.02C21 5.5 16.54 2 12 2Z" fill="currentColor"/></svg>
+          <span>Chat Zalo</span>
+        </button>
       </div>
     </div>
   );

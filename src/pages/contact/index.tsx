@@ -33,12 +33,20 @@ const ContactPage: React.FunctionComponent = () => {
     try {
       api.openChat({
         type: "oa",
-        id: "4318657068771012646",
-        message: "Xin chào, tôi muốn nhận thông tin tư vấn các dự án bất động sản."
+        id: "656653957756576520",
+        message: "Xin chào, tôi muốn được tư vấn.",
       });
     } catch (error) {
       console.error(error);
-      window.location.href = "https://zalo.me/4318657068771012646";
+      window.location.href = "https://zalo.me/656653957756576520";
+    }
+  };
+
+  const handleCallHotline = () => {
+    try {
+      api.openPhone({ phoneNumber: "0965355355" });
+    } catch (error) {
+      window.location.href = "tel:0965355355";
     }
   };
 
@@ -110,14 +118,22 @@ const ContactPage: React.FunctionComponent = () => {
             Nhận thông tin tư vấn
           </h3>
           <p className="text-sm text-gray-600 mb-5 leading-relaxed">
-            Kết nối ngay với chuyên viên tư vấn của Đất Xanh Miền Đông qua Zalo để nhận báo giá và chính sách nhanh nhất.
+            Kết nối ngay với chuyên viên tư vấn của Đất Xanh Miền Đông qua Zalo hoặc Hotline để nhận báo giá và chính sách nhanh nhất.
           </p>
-          <Button fullWidth onClick={handleChatZalo} size="large" className="rounded-xl shadow-md shadow-primary/30">
-            <span className="flex items-center justify-center">
-              <Icon icon="zi-chat" className="mr-2" />
-              <span>Chat ngay với Zalo OA</span>
-            </span>
-          </Button>
+          <div className="flex flex-col space-y-3 w-full">
+            <Button fullWidth onClick={handleCallHotline} size="large" className="rounded-xl shadow-md" style={{ backgroundColor: '#f5831f', color: 'white' }}>
+              <span className="flex items-center justify-center font-bold">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="mr-2"><path d="M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z" fill="currentColor" /></svg>
+                <span>Gọi Hotline - 0965.355.355</span>
+              </span>
+            </Button>
+            <Button fullWidth onClick={handleChatZalo} size="large" className="rounded-xl shadow-md" style={{ backgroundColor: '#0068ff', color: 'white' }}>
+              <span className="flex items-center justify-center font-bold">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="mr-2"><path d="M12 2C6.48 2 2 6.48 2 12C2 13.68 2.42 15.26 3.16 16.65L2 21L6.5 19.92C7.8 20.61 9.35 21 11.02 21C16.54 21 21 16.54 21 11.02C21 5.5 16.54 2 12 2Z" fill="currentColor" /></svg>
+                <span>Chat ngay với Zalo OA</span>
+              </span>
+            </Button>
+          </div>
         </div>
       </div>
 

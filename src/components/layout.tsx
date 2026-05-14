@@ -5,10 +5,13 @@ import { Suspense } from "react";
 import { PageSkeleton } from "./skeleton";
 import { Toaster } from "react-hot-toast";
 import { ScrollRestoration } from "./scroll-restoration";
+import SplashScreen from "./splash-screen";
+
 export default function Layout() {
 
   return (
-    <div className="w-screen h-screen flex flex-col bg-background text-foreground">
+    <div className="w-screen h-screen flex flex-col bg-background text-foreground relative">
+      <SplashScreen />
       <Header />
       <div className="flex-1 overflow-y-auto">
         <Suspense fallback={<PageSkeleton />}>
